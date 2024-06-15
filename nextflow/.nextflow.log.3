@@ -1,0 +1,391 @@
+Jun-13 01:22:46.113 [main] DEBUG nextflow.cli.Launcher - $> nextflow run Pipeline-16S -profile docker --reads '/home/rendrick27/project/fastq/*.fastq.gz' --referenceAln /home/rendrick27/project/databases/silva.seed_v138_1.align --referenceTax /home/rendrick27/project/databases/silva.seed_v138_1.tax --outdir /home/rendrick27/drought_results --cpus 2
+Jun-13 01:22:46.191 [main] DEBUG nextflow.cli.CmdRun - N E X T F L O W  ~  version 24.04.2
+Jun-13 01:22:46.207 [main] DEBUG nextflow.plugin.PluginsFacade - Setting up plugin manager > mode=prod; embedded=false; plugins-dir=/home/rendrick27/.nextflow/plugins; core-plugins: nf-amazon@2.5.2,nf-azure@1.6.0,nf-cloudcache@0.4.1,nf-codecommit@0.2.0,nf-console@1.1.3,nf-ga4gh@1.3.0,nf-google@1.13.2,nf-tower@1.9.1,nf-wave@1.4.2
+Jun-13 01:22:46.215 [main] INFO  o.pf4j.DefaultPluginStatusProvider - Enabled plugins: []
+Jun-13 01:22:46.216 [main] INFO  o.pf4j.DefaultPluginStatusProvider - Disabled plugins: []
+Jun-13 01:22:46.219 [main] INFO  org.pf4j.DefaultPluginManager - PF4J version 3.10.0 in 'deployment' mode
+Jun-13 01:22:46.229 [main] INFO  org.pf4j.AbstractPluginManager - No plugins
+Jun-13 01:22:46.817 [main] DEBUG nextflow.config.ConfigBuilder - Found config base: /home/rendrick27/project/nextflow/Pipeline-16S/nextflow.config
+Jun-13 01:22:46.820 [main] DEBUG nextflow.config.ConfigBuilder - Parsing config file: /home/rendrick27/project/nextflow/Pipeline-16S/nextflow.config
+Jun-13 01:22:46.833 [main] DEBUG n.secret.LocalSecretsProvider - Secrets store: /home/rendrick27/.nextflow/secrets/store.json
+Jun-13 01:22:46.836 [main] DEBUG nextflow.secret.SecretsLoader - Discovered secrets providers: [nextflow.secret.LocalSecretsProvider@4aa21f9d] - activable => nextflow.secret.LocalSecretsProvider@4aa21f9d
+Jun-13 01:22:46.846 [main] DEBUG nextflow.config.ConfigBuilder - Applying config profile: `docker`
+Jun-13 01:22:47.034 [main] DEBUG nextflow.config.ConfigBuilder - Available config profiles: [testITS, mana, gcp, conda, testDemux, singularity, test16S, testCOI, local, docker]
+Jun-13 01:22:47.059 [main] DEBUG nextflow.cli.CmdRun - Applied DSL=2 from script declaration
+Jun-13 01:22:47.071 [main] DEBUG nextflow.cli.CmdRun - Launching `Pipeline-16S/main.nf` [exotic_tesla] DSL2 - revision: f6a89bb7da
+Jun-13 01:22:47.073 [main] DEBUG nextflow.plugin.PluginsFacade - Plugins default=[]
+Jun-13 01:22:47.073 [main] DEBUG nextflow.plugin.PluginsFacade - Plugins resolved requirement=[]
+Jun-13 01:22:47.123 [main] DEBUG nextflow.Session - Session UUID: 25b5623f-c004-46fd-a7b1-f4d262396afb
+Jun-13 01:22:47.123 [main] DEBUG nextflow.Session - Run name: exotic_tesla
+Jun-13 01:22:47.123 [main] DEBUG nextflow.Session - Executor pool size: 16
+Jun-13 01:22:47.130 [main] DEBUG nextflow.file.FilePorter - File porter settings maxRetries=3; maxTransfers=50; pollTimeout=null
+Jun-13 01:22:47.135 [main] DEBUG nextflow.util.ThreadPoolBuilder - Creating thread pool 'FileTransfer' minSize=10; maxSize=48; workQueue=LinkedBlockingQueue[10000]; allowCoreThreadTimeout=false
+Jun-13 01:22:47.151 [main] DEBUG nextflow.cli.CmdRun - 
+  Version: 24.04.2 build 5914
+  Created: 29-05-2024 06:19 UTC (07:19 WEST)
+  System: Linux 6.5.0-35-generic
+  Runtime: Groovy 4.0.21 on OpenJDK 64-Bit Server VM 11.0.23+9-post-Ubuntu-1ubuntu122.04.1
+  Encoding: UTF-8 (UTF-8)
+  Process: 207371@Ubu-Rendrick27 [127.0.1.1]
+  CPUs: 16 - Mem: 31.3 GB (8.7 GB) - Swap: 2 GB (810.5 MB)
+Jun-13 01:22:47.165 [main] DEBUG nextflow.Session - Work-dir: /home/rendrick27/project/nextflow/work [ext2/ext3]
+Jun-13 01:22:47.166 [main] DEBUG nextflow.Session - Script base path does not exist or is not a directory: /home/rendrick27/project/nextflow/Pipeline-16S/bin
+Jun-13 01:22:47.173 [main] DEBUG nextflow.executor.ExecutorFactory - Extension executors providers=[]
+Jun-13 01:22:47.180 [main] DEBUG nextflow.Session - Observer factory: DefaultObserverFactory
+Jun-13 01:22:47.207 [main] DEBUG nextflow.cache.CacheFactory - Using Nextflow cache factory: nextflow.cache.DefaultCacheFactory
+Jun-13 01:22:47.221 [main] DEBUG nextflow.util.CustomThreadPool - Creating default thread pool > poolSize: 17; maxThreads: 1000
+Jun-13 01:22:47.274 [main] DEBUG nextflow.Session - Session start
+Jun-13 01:22:47.530 [main] DEBUG nextflow.script.ScriptRunner - > Launching execution
+Jun-13 01:22:50.656 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Jun-13 01:22:50.657 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Jun-13 01:22:50.662 [main] DEBUG nextflow.executor.Executor - [warm up] executor > local
+Jun-13 01:22:50.667 [main] DEBUG n.processor.LocalPollingMonitor - Creating local task monitor for executor 'local' > cpus=16; memory=31.3 GB; capacity=40; pollInterval=100ms; dumpInterval=5m
+Jun-13 01:22:50.669 [main] DEBUG n.processor.TaskPollingMonitor - >>> barrier register (monitor: local)
+Jun-13 01:22:50.715 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Jun-13 01:22:50.715 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Jun-13 01:22:50.725 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Jun-13 01:22:50.726 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Jun-13 01:22:50.741 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Jun-13 01:22:50.741 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Jun-13 01:22:50.756 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Jun-13 01:22:50.756 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Jun-13 01:22:50.765 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Jun-13 01:22:50.765 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Jun-13 01:22:50.784 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Jun-13 01:22:50.784 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Jun-13 01:22:50.791 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Jun-13 01:22:50.792 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Jun-13 01:22:50.804 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Jun-13 01:22:50.804 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Jun-13 01:22:50.815 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Jun-13 01:22:50.815 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Jun-13 01:22:50.825 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Jun-13 01:22:50.825 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Jun-13 01:22:50.840 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Jun-13 01:22:50.840 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Jun-13 01:22:50.842 [main] DEBUG nextflow.processor.TaskProcessor - Creating *combiner* operator for each param(s) at index(es): [1]
+Jun-13 01:22:50.865 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Jun-13 01:22:50.865 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Jun-13 01:22:50.883 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Jun-13 01:22:50.883 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Jun-13 01:22:50.904 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Jun-13 01:22:50.904 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Jun-13 01:22:50.917 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Jun-13 01:22:50.917 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Jun-13 01:22:50.928 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Jun-13 01:22:50.928 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Jun-13 01:22:50.928 [main] DEBUG nextflow.processor.TaskProcessor - Creating *combiner* operator for each param(s) at index(es): [1]
+Jun-13 01:22:50.937 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Jun-13 01:22:50.938 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Jun-13 01:22:50.946 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Jun-13 01:22:50.946 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Jun-13 01:22:50.958 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Jun-13 01:22:50.958 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Jun-13 01:22:50.969 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Jun-13 01:22:50.969 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Jun-13 01:22:50.976 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Jun-13 01:22:50.976 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Jun-13 01:22:50.981 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Jun-13 01:22:50.981 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Jun-13 01:22:51.021 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Jun-13 01:22:51.021 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Jun-13 01:22:51.029 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Jun-13 01:22:51.029 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Jun-13 01:22:51.035 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Jun-13 01:22:51.035 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Jun-13 01:22:51.041 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Jun-13 01:22:51.041 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Jun-13 01:22:51.047 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Jun-13 01:22:51.047 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Jun-13 01:22:51.055 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Jun-13 01:22:51.055 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Jun-13 01:22:51.062 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Jun-13 01:22:51.062 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Jun-13 01:22:51.068 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Jun-13 01:22:51.069 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Jun-13 01:22:51.075 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Jun-13 01:22:51.075 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Jun-13 01:22:51.081 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Jun-13 01:22:51.081 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Jun-13 01:22:51.083 [main] DEBUG nextflow.Session - Workflow process names [dsl2]: DADA2_FILTERANDTRIM, FASTTREE, MOTHUR_SUMMARY_SINGLE, DADA2_LEARNERRORS, pipeline_16S:MOTHUR:GET_SUBSAMPLING_THRESHOLD, MOTHUR_REMOVE_RARE, pipeline_16S:DIVERSITY:PHYLOSEQ_UNIFRAC_UNWEIGHTED, CONVERT_TO_MOTHUR_FORMAT, pipeline_16S:MOTHUR:MOTHUR_SYNC, pipeline_16S:DIVERSITY:MOTHUR_SUMMARY_SHARED, MOTHUR_DIST_SEQS, pipeline_16S:MOTHUR:MOTHUR_CLASSIFY_SEQS, MOTHUR_CONSENSUS_RAW, MOTHUR_CONSENSUS, pipeline_16S:MOTHUR:MOTHUR_CLUSTER, HOLOVIEWS_CLUSTERMAP, pipeline_16S:MOTHUR:MOTHUR_ALIGN_SEQS, pipeline_16S:MOTHUR:DOWNLOAD_SILVA_FOR_MOTHUR, GET_SUBSAMPLING_THRESHOLD, PHYLOSEQ_UNIFRAC_UNWEIGHTED, pipeline_16S:MOTHUR:LULU, pipeline_16S:DADA2:SUMMARIZE_TABLE, pipeline_16S:MOTHUR:MOTHUR_CHIMERA, MOTHUR_CLUSTER, pipeline_16S:DIVERSITY:FASTTREE, MOTHUR_CLASSIFY_SEQS, pipeline_16S:MOTHUR:MOTHUR_SUMMARY_SINGLE, DADA2_DADA, MOTHUR_SCREEN_SEQS, pipeline_16S:READ_TRACKING, HOLOVIEWS_SCATTER, pipeline_16S:MOTHUR:MOTHUR_CONSENSUS_RAW, DOWNLOAD_MIDORI_RDP, pipeline_16S:DADA2:DADA2_MERGEPAIRS, pipeline_16S:MOTHUR:MOTHUR_REMOVE_RARE, pipeline_16S:DADA2:DADA2_LEARNERRORS, DOWNLOAD_RDP_FOR_DADA2, pipeline_16S:DIVERSITY:MOTHUR_SUMMARY_SINGLE, DADA2_CHIMERA, pipeline_16S:MOTHUR:MOTHUR_SUBSAMPLE, pipeline_16S:HOLOVIEWS:HOLOVIEWS_SCATTER, MOTHUR_MAKE_DATABASE, pipeline_16S:MOTHUR:MOTHUR_DIST_SEQS, pipeline_16S:HOLOVIEWS:HOLOVIEWS_BARS, DADA2_DEREPFASTQ, pipeline_16S:MOTHUR:MOTHUR_REMOVE_LINEAGE, DOWNLOAD_SILVA_FOR_MOTHUR, pipeline_16S:HOLOVIEWS:HOLOVIEWS_CLUSTERMAP, pipeline_16S:DADA2:DADA2_FILTERANDTRIM, MOTHUR_SUMMARY_SHARED, MOTHUR_ALIGN_SEQS, MOTHUR_CHIMERA, HOLOVIEWS_PREPARE, MOTHUR_SYNC, pipeline_16S:MOTHUR:MOTHUR_SCREEN_SEQS, pipeline_16S:DIVERSITY:PHYLOSEQ_UNIFRAC_WEIGHTED, SUMMARIZE_TABLE, DOWNLOAD_UNITE, pipeline_16S:DADA2:DADA2_DADA, HOLOVIEWS_BARS, MOTHUR_SUBSAMPLE, pipeline_16S:MOTHUR:MOTHUR_CONSENSUS, pipeline_16S:HOLOVIEWS:HOLOVIEWS_PREPARE, DOWNLOAD_IBOL_2, pipeline_16S:MOTHUR:SUMMARIZE_TABLE, MOTHUR_REMOVE_LINEAGE, PHYLOSEQ_UNIFRAC, DOWNLOAD_IBOL, LULU, READ_TRACKING, DADA2_MERGEPAIRS, pipeline_16S:DADA2:DADA2_DEREPFASTQ, PHYLOSEQ_UNIFRAC_WEIGHTED
+Jun-13 01:22:51.085 [main] DEBUG nextflow.Session - Igniting dataflow network (37)
+Jun-13 01:22:51.089 [PathVisitor-1] DEBUG nextflow.file.PathVisitor - files for syntax: glob; folder: /home/rendrick27/project/fastq/; pattern: *.fastq.gz; options: [:]
+Jun-13 01:22:51.090 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > pipeline_16S:DADA2:DADA2_FILTERANDTRIM
+Jun-13 01:22:51.091 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > pipeline_16S:DADA2:DADA2_DEREPFASTQ
+Jun-13 01:22:51.091 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > pipeline_16S:DADA2:DADA2_LEARNERRORS
+Jun-13 01:22:51.091 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > pipeline_16S:DADA2:DADA2_DADA
+Jun-13 01:22:51.091 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > pipeline_16S:DADA2:DADA2_MERGEPAIRS
+Jun-13 01:22:51.091 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > pipeline_16S:DADA2:SUMMARIZE_TABLE
+Jun-13 01:22:51.091 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > pipeline_16S:MOTHUR:DOWNLOAD_SILVA_FOR_MOTHUR
+Jun-13 01:22:51.091 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > pipeline_16S:MOTHUR:MOTHUR_ALIGN_SEQS
+Jun-13 01:22:51.091 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > pipeline_16S:MOTHUR:MOTHUR_SCREEN_SEQS
+Jun-13 01:22:51.091 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > pipeline_16S:MOTHUR:MOTHUR_CHIMERA
+Jun-13 01:22:51.091 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > pipeline_16S:MOTHUR:MOTHUR_CLASSIFY_SEQS
+Jun-13 01:22:51.092 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > pipeline_16S:MOTHUR:MOTHUR_CLUSTER
+Jun-13 01:22:51.092 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > pipeline_16S:MOTHUR:MOTHUR_CLUSTER
+Jun-13 01:22:51.092 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > pipeline_16S:MOTHUR:MOTHUR_CONSENSUS_RAW
+Jun-13 01:22:51.093 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > pipeline_16S:MOTHUR:MOTHUR_REMOVE_LINEAGE
+Jun-13 01:22:51.094 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > pipeline_16S:MOTHUR:MOTHUR_REMOVE_RARE
+Jun-13 01:22:51.094 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > pipeline_16S:MOTHUR:GET_SUBSAMPLING_THRESHOLD
+Jun-13 01:22:51.094 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > pipeline_16S:MOTHUR:MOTHUR_SUBSAMPLE
+Jun-13 01:22:51.094 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > pipeline_16S:MOTHUR:MOTHUR_SUBSAMPLE
+Jun-13 01:22:51.094 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > pipeline_16S:MOTHUR:MOTHUR_DIST_SEQS
+Jun-13 01:22:51.094 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > pipeline_16S:MOTHUR:LULU
+Jun-13 01:22:51.094 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > pipeline_16S:MOTHUR:MOTHUR_SYNC
+Jun-13 01:22:51.094 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > pipeline_16S:MOTHUR:MOTHUR_CONSENSUS
+Jun-13 01:22:51.094 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > pipeline_16S:MOTHUR:SUMMARIZE_TABLE
+Jun-13 01:22:51.095 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > pipeline_16S:MOTHUR:MOTHUR_SUMMARY_SINGLE
+Jun-13 01:22:51.095 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > pipeline_16S:READ_TRACKING
+Jun-13 01:22:51.095 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > pipeline_16S:HOLOVIEWS:HOLOVIEWS_PREPARE
+Jun-13 01:22:51.095 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > pipeline_16S:HOLOVIEWS:HOLOVIEWS_BARS
+Jun-13 01:22:51.095 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > pipeline_16S:HOLOVIEWS:HOLOVIEWS_SCATTER
+Jun-13 01:22:51.095 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > pipeline_16S:HOLOVIEWS:HOLOVIEWS_CLUSTERMAP
+Jun-13 01:22:51.095 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > pipeline_16S:DIVERSITY:MOTHUR_SUMMARY_SINGLE
+Jun-13 01:22:51.095 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > pipeline_16S:DIVERSITY:MOTHUR_SUMMARY_SHARED
+Jun-13 01:22:51.096 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > pipeline_16S:DIVERSITY:FASTTREE
+Jun-13 01:22:51.096 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > pipeline_16S:DIVERSITY:PHYLOSEQ_UNIFRAC_WEIGHTED
+Jun-13 01:22:51.096 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > pipeline_16S:DIVERSITY:PHYLOSEQ_UNIFRAC_UNWEIGHTED
+Jun-13 01:22:51.097 [main] DEBUG nextflow.script.ScriptRunner - Parsed script files:
+  Script_21a4e2da2d486337: /home/rendrick27/project/nextflow/Pipeline-16S/../subworkflows/../modules/bash/download/main.nf
+  Script_acf6f3e4e222da88: /home/rendrick27/project/nextflow/Pipeline-16S/../subworkflows/../modules/util/misc/main.nf
+  Script_1af9a9529bcbd4c7: /home/rendrick27/project/nextflow/Pipeline-16S/../subworkflows/../modules/mothur/removeLineage/main.nf
+  Script_85671cef3618d69b: /home/rendrick27/project/nextflow/Pipeline-16S/../subworkflows/../modules/R/lulu/main.nf
+  Script_d54d4cdda8dfb22c: /home/rendrick27/project/nextflow/Pipeline-16S/../subworkflows/../modules/python/holoviews/bars/main.nf
+  Script_50dfdb8860b5a670: /home/rendrick27/project/nextflow/Pipeline-16S/../subworkflows/../modules/R/dada2/mergePairs/main.nf
+  Script_390113710d771591: /home/rendrick27/project/nextflow/Pipeline-16S/main.nf
+  Script_fb7537cfbc748fa5: /home/rendrick27/project/nextflow/Pipeline-16S/../subworkflows/../modules/fasttree/main.nf
+  Script_480809352c1b17eb: /home/rendrick27/project/nextflow/Pipeline-16S/../subworkflows/../modules/R/phyloseq/unifrac/main.nf
+  Script_02d30dbf33a3b099: /home/rendrick27/project/nextflow/Pipeline-16S/../subworkflows/../modules/mothur/sync/main.nf
+  Script_80756741d444b3f9: /home/rendrick27/project/nextflow/Pipeline-16S/../subworkflows/../modules/mothur/screenSeqs/main.nf
+  Script_51b2cd94f514808c: /home/rendrick27/project/nextflow/Pipeline-16S/../subworkflows/../modules/mothur/summarySingle/main.nf
+  Script_1d9b79356f688f71: /home/rendrick27/project/nextflow/Pipeline-16S/../subworkflows/holoviews.nf
+  Script_41d5bc4b5a8747b8: /home/rendrick27/project/nextflow/Pipeline-16S/../subworkflows/../modules/mothur/classifySeqs/main.nf
+  Script_d7ca5e35f0ad462b: /home/rendrick27/project/nextflow/Pipeline-16S/../subworkflows/../modules/mothur/removeRare/main.nf
+  Script_6a61aa9f4f2e1277: /home/rendrick27/project/nextflow/Pipeline-16S/../subworkflows/../modules/python/holoviews/heatmap/main.nf
+  Script_25eb85449cc3981c: /home/rendrick27/project/nextflow/Pipeline-16S/../subworkflows/../modules/mothur/makeDatabase/main.nf
+  Script_f9ebb04df394f833: /home/rendrick27/project/nextflow/Pipeline-16S/../subworkflows/../modules/mothur/cluster/main.nf
+  Script_38b0c5c3a6387b19: /home/rendrick27/project/nextflow/Pipeline-16S/../subworkflows/../modules/R/dada2/dada/main.nf
+  Script_59899d786559af4e: /home/rendrick27/project/nextflow/Pipeline-16S/../subworkflows/../modules/python/holoviews/scatter/main.nf
+  Script_a5fa45a07c93cd0b: /home/rendrick27/project/nextflow/Pipeline-16S/../subworkflows/../modules/python/holoviews/util/main.nf
+  Script_ec08904e766966e3: /home/rendrick27/project/nextflow/Pipeline-16S/../subworkflows/../modules/mothur/distSeqs/main.nf
+  Script_4bab0615786ce862: /home/rendrick27/project/nextflow/Pipeline-16S/../subworkflows/mothur.nf
+  Script_0179fdfc936477d3: /home/rendrick27/project/nextflow/Pipeline-16S/../subworkflows/../modules/mothur/chimera/main.nf
+  Script_d380c22848b6db35: /home/rendrick27/project/nextflow/Pipeline-16S/../subworkflows/../modules/mothur/summaryShared/main.nf
+  Script_3dcc1e75538d58db: /home/rendrick27/project/nextflow/Pipeline-16S/../subworkflows/../modules/R/dada2/learnErrors/main.nf
+  Script_d7073b10b7ef1488: /home/rendrick27/project/nextflow/Pipeline-16S/../subworkflows/../modules/R/phyloseq/unifrac/./functions.nf
+  Script_74344faa4177e201: /home/rendrick27/project/nextflow/Pipeline-16S/../subworkflows/../modules/mothur/consensus/main.nf
+  Script_33ef101be48138b4: /home/rendrick27/project/nextflow/Pipeline-16S/../subworkflows/../modules/mothur/alignSeqs/main.nf
+  Script_bd843e3d093b6445: /home/rendrick27/project/nextflow/Pipeline-16S/../subworkflows/../modules/R/dada2/derepFastq/main.nf
+  Script_e2b2a929252e2b04: /home/rendrick27/project/nextflow/Pipeline-16S/../subworkflows/../modules/R/dada2/removeBimeraDenovo/main.nf
+  Script_ee52363a8419361e: /home/rendrick27/project/nextflow/Pipeline-16S/./util.nf
+  Script_cd1333e771192e5b: /home/rendrick27/project/nextflow/Pipeline-16S/../subworkflows/../modules/R/dada2/filterAndTrim/main.nf
+  Script_f88115fb573b58f6: /home/rendrick27/project/nextflow/Pipeline-16S/../subworkflows/../modules/mothur/subsample/main.nf
+  Script_01d7ab4adeeb38b5: /home/rendrick27/project/nextflow/Pipeline-16S/../subworkflows/dada2.nf
+  Script_d334f64b96855aa7: /home/rendrick27/project/nextflow/Pipeline-16S/../subworkflows/diversity.nf
+Jun-13 01:22:51.097 [main] DEBUG nextflow.script.ScriptRunner - > Awaiting termination 
+Jun-13 01:22:51.097 [main] DEBUG nextflow.Session - Session await
+Jun-13 01:22:51.126 [Actor Thread 7] DEBUG nextflow.splitter.AbstractSplitter - Creating gzip splitter for: /home/rendrick27/project/fastq/Soil_RNA_dried_soil_rainfed_rep2_R1.fastq.gz
+Jun-13 01:22:51.216 [Actor Thread 6] DEBUG nextflow.processor.TaskProcessor - Handling unexpected condition for
+  task: name=pipeline_16S:DADA2:DADA2_FILTERANDTRIM (6); work-dir=null
+  error [java.io.IOException]: Unable to create directory=/home/rendrick27/project/nextflow/work/41/3d90171884d0cbf371bb73d7ba789e -- check file system permissions
+Jun-13 01:22:51.225 [Actor Thread 6] ERROR nextflow.processor.TaskProcessor - Error executing process > 'pipeline_16S:DADA2:DADA2_FILTERANDTRIM (6)'
+
+Caused by:
+  Unable to create directory=/home/rendrick27/project/nextflow/work/41/3d90171884d0cbf371bb73d7ba789e -- check file system permissions
+
+
+java.io.IOException: Unable to create directory=/home/rendrick27/project/nextflow/work/41/3d90171884d0cbf371bb73d7ba789e -- check file system permissions
+	at nextflow.processor.TaskProcessor.checkCachedOrLaunchTask(TaskProcessor.groovy:837)
+	at org.codehaus.groovy.vmplugin.v8.IndyInterface.fromCache(IndyInterface.java:321)
+	at nextflow.processor.TaskProcessor.invokeTask(TaskProcessor.groovy:660)
+	at nextflow.processor.InvokeTaskAdapter.call(InvokeTaskAdapter.groovy:52)
+	at groovyx.gpars.dataflow.operator.DataflowOperatorActor.startTask(DataflowOperatorActor.java:120)
+	at groovyx.gpars.dataflow.operator.ForkingDataflowOperatorActor.access$001(ForkingDataflowOperatorActor.java:35)
+	at groovyx.gpars.dataflow.operator.ForkingDataflowOperatorActor$1.run(ForkingDataflowOperatorActor.java:58)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at java.base/java.lang.Thread.run(Thread.java:829)
+Jun-13 01:22:51.233 [Actor Thread 6] DEBUG nextflow.Session - Session aborted -- Cause: Unable to create directory=/home/rendrick27/project/nextflow/work/41/3d90171884d0cbf371bb73d7ba789e -- check file system permissions
+Jun-13 01:22:51.276 [Task monitor] DEBUG n.processor.TaskPollingMonitor - <<< barrier arrives (monitor: local) - terminating tasks monitor poll loop
+Jun-13 01:22:51.298 [Actor Thread 6] DEBUG nextflow.Session - The following nodes are still active:
+[process] pipeline_16S:DADA2:DADA2_FILTERANDTRIM
+  status=ACTIVE
+  port 0: (queue) closed; channel: -
+  port 1: (cntrl) -     ; channel: $
+
+[process] pipeline_16S:DADA2:DADA2_DEREPFASTQ
+  status=ACTIVE
+  port 0: (queue) OPEN  ; channel: -
+  port 1: (cntrl) -     ; channel: $
+
+[process] pipeline_16S:DADA2:DADA2_LEARNERRORS
+  status=ACTIVE
+  port 0: (queue) OPEN  ; channel: -
+  port 1: (cntrl) -     ; channel: $
+
+[process] pipeline_16S:DADA2:DADA2_DADA
+  status=ACTIVE
+  port 0: (queue) OPEN  ; channel: -
+  port 1: (cntrl) -     ; channel: $
+
+[process] pipeline_16S:DADA2:DADA2_MERGEPAIRS
+  status=ACTIVE
+  port 0: (value) OPEN  ; channel: derep
+  port 1: (value) OPEN  ; channel: denoised
+  port 2: (cntrl) -     ; channel: $
+
+[process] pipeline_16S:DADA2:SUMMARIZE_TABLE
+  status=ACTIVE
+  port 0: (value) OPEN  ; channel: -
+  port 1: (cntrl) -     ; channel: $
+
+[process] pipeline_16S:MOTHUR:MOTHUR_ALIGN_SEQS
+  status=ACTIVE
+  port 0: (value) OPEN  ; channel: -
+  port 1: (value) OPEN  ; channel: db_aln
+  port 2: (cntrl) -     ; channel: $
+
+[process] pipeline_16S:MOTHUR:MOTHUR_SCREEN_SEQS
+  status=ACTIVE
+  port 0: (queue) OPEN  ; channel: -
+  port 1: (cntrl) -     ; channel: $
+
+[process] pipeline_16S:MOTHUR:MOTHUR_CHIMERA
+  status=ACTIVE
+  port 0: (queue) OPEN  ; channel: -
+  port 1: (cntrl) -     ; channel: $
+
+[process] pipeline_16S:MOTHUR:MOTHUR_CLASSIFY_SEQS
+  status=ACTIVE
+  port 0: (queue) OPEN  ; channel: -
+  port 1: (value) OPEN  ; channel: db_aln
+  port 2: (value) OPEN  ; channel: db_tax
+  port 3: (cntrl) -     ; channel: $
+
+[process] pipeline_16S:MOTHUR:MOTHUR_CLUSTER
+  status=ACTIVE
+  port 0: (queue) OPEN  ; channel: -
+  port 1: (value) bound ; channel: __$eachinparam<1>
+  port 2: (cntrl) -     ; channel: $
+
+[process] pipeline_16S:MOTHUR:MOTHUR_CONSENSUS_RAW
+  status=ACTIVE
+  port 0: (queue) OPEN  ; channel: -
+  port 1: (cntrl) -     ; channel: $
+
+[process] pipeline_16S:MOTHUR:MOTHUR_REMOVE_LINEAGE
+  status=ACTIVE
+  port 0: (queue) OPEN  ; channel: -
+  port 1: (cntrl) -     ; channel: $
+
+[process] pipeline_16S:MOTHUR:MOTHUR_REMOVE_RARE
+  status=ACTIVE
+  port 0: (queue) OPEN  ; channel: -
+  port 1: (cntrl) -     ; channel: $
+
+[process] pipeline_16S:MOTHUR:GET_SUBSAMPLING_THRESHOLD
+  status=ACTIVE
+  port 0: (value) OPEN  ; channel: count
+  port 1: (cntrl) -     ; channel: $
+
+[process] pipeline_16S:MOTHUR:MOTHUR_SUBSAMPLE
+  status=ACTIVE
+  port 0: (queue) OPEN  ; channel: -
+  port 1: (value) OPEN  ; channel: __$eachinparam<1>
+  port 2: (cntrl) -     ; channel: $
+
+[process] pipeline_16S:MOTHUR:MOTHUR_DIST_SEQS
+  status=ACTIVE
+  port 0: (queue) OPEN  ; channel: -
+  port 1: (cntrl) -     ; channel: $
+
+[process] pipeline_16S:MOTHUR:LULU
+  status=ACTIVE
+  port 0: (queue) OPEN  ; channel: -
+  port 1: (cntrl) -     ; channel: $
+
+[process] pipeline_16S:MOTHUR:MOTHUR_SYNC
+  status=ACTIVE
+  port 0: (queue) OPEN  ; channel: -
+  port 1: (cntrl) -     ; channel: $
+
+[process] pipeline_16S:MOTHUR:MOTHUR_CONSENSUS
+  status=ACTIVE
+  port 0: (queue) OPEN  ; channel: -
+  port 1: (cntrl) -     ; channel: $
+
+[process] pipeline_16S:MOTHUR:SUMMARIZE_TABLE
+  status=ACTIVE
+  port 0: (queue) OPEN  ; channel: -
+  port 1: (cntrl) -     ; channel: $
+
+[process] pipeline_16S:MOTHUR:MOTHUR_SUMMARY_SINGLE
+  status=ACTIVE
+  port 0: (queue) OPEN  ; channel: -
+  port 1: (cntrl) -     ; channel: $
+
+[process] pipeline_16S:READ_TRACKING
+  status=ACTIVE
+  port 0: (queue) OPEN  ; channel: counts
+  port 1: (cntrl) -     ; channel: $
+
+[process] pipeline_16S:HOLOVIEWS:HOLOVIEWS_PREPARE
+  status=ACTIVE
+  port 0: (queue) OPEN  ; channel: -
+  port 1: (cntrl) -     ; channel: $
+
+[process] pipeline_16S:HOLOVIEWS:HOLOVIEWS_BARS
+  status=ACTIVE
+  port 0: (queue) OPEN  ; channel: -
+  port 1: (cntrl) -     ; channel: $
+
+[process] pipeline_16S:HOLOVIEWS:HOLOVIEWS_SCATTER
+  status=ACTIVE
+  port 0: (queue) OPEN  ; channel: -
+  port 1: (cntrl) -     ; channel: $
+
+[process] pipeline_16S:HOLOVIEWS:HOLOVIEWS_CLUSTERMAP
+  status=ACTIVE
+  port 0: (queue) OPEN  ; channel: -
+  port 1: (cntrl) -     ; channel: $
+
+[process] pipeline_16S:DIVERSITY:MOTHUR_SUMMARY_SINGLE
+  status=ACTIVE
+  port 0: (queue) OPEN  ; channel: -
+  port 1: (cntrl) -     ; channel: $
+
+[process] pipeline_16S:DIVERSITY:MOTHUR_SUMMARY_SHARED
+  status=ACTIVE
+  port 0: (queue) OPEN  ; channel: -
+  port 1: (cntrl) -     ; channel: $
+
+[process] pipeline_16S:DIVERSITY:FASTTREE
+  status=ACTIVE
+  port 0: (queue) OPEN  ; channel: -
+  port 1: (cntrl) -     ; channel: $
+
+[process] pipeline_16S:DIVERSITY:PHYLOSEQ_UNIFRAC_WEIGHTED
+  status=ACTIVE
+  port 0: (queue) OPEN  ; channel: -
+  port 1: (cntrl) -     ; channel: $
+
+[process] pipeline_16S:DIVERSITY:PHYLOSEQ_UNIFRAC_UNWEIGHTED
+  status=ACTIVE
+  port 0: (queue) OPEN  ; channel: -
+  port 1: (cntrl) -     ; channel: $
+
+Jun-13 01:22:51.300 [main] DEBUG nextflow.Session - Session await > all processes finished
+Jun-13 01:22:51.300 [main] DEBUG nextflow.Session - Session await > all barriers passed
+Jun-13 01:22:51.312 [main] DEBUG n.trace.WorkflowStatsObserver - Workflow completed > WorkflowStats[succeededCount=0; failedCount=0; ignoredCount=0; cachedCount=0; pendingCount=64; submittedCount=0; runningCount=0; retriesCount=0; abortedCount=0; succeedDuration=0ms; failedDuration=0ms; cachedDuration=0ms;loadCpus=0; loadMemory=0; peakRunning=0; peakCpus=0; peakMemory=0; ]
+Jun-13 01:22:51.313 [Actor Thread 14] DEBUG nextflow.processor.TaskProcessor - Handling unexpected condition for
+  task: name=pipeline_16S:DADA2:DADA2_FILTERANDTRIM; work-dir=null
+  error [java.lang.InterruptedException]: java.lang.InterruptedException
+Jun-13 01:22:51.313 [Actor Thread 12] DEBUG nextflow.processor.TaskProcessor - Handling unexpected condition for
+  task: name=pipeline_16S:MOTHUR:MOTHUR_SYNC; work-dir=null
+  error [java.lang.InterruptedException]: java.lang.InterruptedException
+Jun-13 01:22:51.314 [Actor Thread 13] DEBUG nextflow.file.SortFileCollector - FileCollector temp dir not removed: null
+Jun-13 01:22:51.314 [Actor Thread 19] DEBUG nextflow.file.SortFileCollector - FileCollector temp dir not removed: null
+Jun-13 01:22:51.314 [Actor Thread 9] DEBUG nextflow.file.SortFileCollector - FileCollector temp dir not removed: null
+Jun-13 01:22:51.314 [Actor Thread 22] DEBUG nextflow.file.SortFileCollector - FileCollector temp dir not removed: null
+Jun-13 01:22:51.445 [main] DEBUG nextflow.cache.CacheDB - Closing CacheDB done
+Jun-13 01:22:51.464 [main] DEBUG nextflow.script.ScriptRunner - > Execution complete -- Goodbye

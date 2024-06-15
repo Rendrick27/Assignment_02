@@ -1,0 +1,6 @@
+metodos do modeltest -ng deve estar nos resultados
+
+texto ser sequencial
+
+identificar os clades (disicamente desenho)
+melhorar a comparação

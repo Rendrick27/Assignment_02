@@ -1,0 +1,14 @@
+Jun-13 00:38:07.512 [main] DEBUG nextflow.cli.Launcher - $> nextflow run hawaiidatascience/metaflowmics/Pipeline-16S -profile docker --reads '/home/rendrick27/project/fastq/*.fastq.gz' --singleEnd --referenceAln /home/rendrick27/project/databases/silva.seed_v138_1.align --referenceTax /home/rendrick27/project/databases/silva.seed_v138_1.tax --outdir /home/rendrick27/drought_results --cpus 2
+Jun-13 00:38:07.594 [main] DEBUG nextflow.cli.CmdRun - N E X T F L O W  ~  version 24.04.2
+Jun-13 00:38:07.609 [main] DEBUG nextflow.plugin.PluginsFacade - Setting up plugin manager > mode=prod; embedded=false; plugins-dir=/home/rendrick27/.nextflow/plugins; core-plugins: nf-amazon@2.5.2,nf-azure@1.6.0,nf-cloudcache@0.4.1,nf-codecommit@0.2.0,nf-console@1.1.3,nf-ga4gh@1.3.0,nf-google@1.13.2,nf-tower@1.9.1,nf-wave@1.4.2
+Jun-13 00:38:07.618 [main] INFO  o.pf4j.DefaultPluginStatusProvider - Enabled plugins: []
+Jun-13 00:38:07.619 [main] INFO  o.pf4j.DefaultPluginStatusProvider - Disabled plugins: []
+Jun-13 00:38:07.621 [main] INFO  org.pf4j.DefaultPluginManager - PF4J version 3.10.0 in 'deployment' mode
+Jun-13 00:38:07.633 [main] INFO  org.pf4j.AbstractPluginManager - No plugins
+Jun-13 00:38:07.644 [main] DEBUG nextflow.scm.ProviderConfig - Using SCM config path: /home/rendrick27/.nextflow/scm
+Jun-13 00:38:07.653 [main] DEBUG nextflow.cli.Launcher - Operation aborted
+nextflow.exception.AbortOperationException: Cannot find script file: hawaiidatascience/metaflowmics/Pipeline-16S
+	at nextflow.cli.CmdRun.getScriptFile(CmdRun.groovy:517)
+	at nextflow.cli.CmdRun.run(CmdRun.groovy:321)
+	at nextflow.cli.Launcher.run(Launcher.groovy:503)
+	at nextflow.cli.Launcher.main(Launcher.groovy:657)
