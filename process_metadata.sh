@@ -1,9 +1,18 @@
 #!/bin/bash
 set -e
 
-# Create the fastq directory if it doesn't exist
+# Create folders if they don't exist
 mkdir -p fastq
+mkdir -p databases
 
+# Download and extract the SILVA database
+wget https://mothur.s3.us-east-2.amazonaws.com/wiki/silva.seed_v138_1.tgz -O silva.seed_v138_1.tgz
+cd databases
+tar xfv ../silva.seed_v138_1.tgz
+rm ../silva.seed_v138_1.tgz
+cd ..
+
+# Function to process metadata CSV files
 process_metadata() {
     local csv_file=$1
 
@@ -13,18 +22,16 @@ process_metadata() {
         # Replace spaces and hyphens with underscores in the name
         name=$(echo "$name" | tr ' -' '__')
 
-        # Download the FASTQ file using fasterq-dump
+        # Download the FASTQ file using fasterq-dump with your email address
         fasterq-dump "$accn"
 
         # Rename and compress the downloaded FASTQ file
-        head -n 200000 "${accn}.fastq" | gzip > "fastq/${name}_R1.fastq.gz"
+        gzip -c "${accn}.fastq" | head -n 200000 > "fastq/${name}_R1.fastq.gz"
         rm "${accn}.fastq"
     done
 }
 
-# Process metadata.csv
+# Process the metadata CSV files
 process_metadata ./data/PRJNA362531_metadata.csv
-
-# Process metadata2.csv
 process_metadata ./data/PRJNA362529_metadata.csv
 

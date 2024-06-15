@@ -3,6 +3,7 @@
 nextflow.enable.dsl=2
 params.options = [:]
 params.paired_end = !(params.single_end)
+params.workdir = "/home/$USER/Documents/GitHub/Assignment_02"
     
 module_dir = "../modules"
 subworkflow_dir = "../subworkflows"
@@ -24,6 +25,21 @@ include { DIVERSITY } from "$subworkflow_dir/diversity.nf" \
 // Functions
 include { helpMessage ; saveParams } from "./util.nf"
 
+// Process to run download.sh script
+process download_data {
+    publishDir "$params.workdir", mode: 'copy'
+    input:
+    path workdir
+
+    output:
+    path "fastq/*", emit: reads
+
+    script:
+    """
+    cd $params.workdir
+    ./process_metadata.sh
+    """
+}
 
 // Main workflow
 workflow pipeline_16S {
@@ -58,9 +74,6 @@ workflow pipeline_16S {
                 .mix(asvs.tracking).collectFile(name: "summary.csv")
         )
             .collectFile(name: "summary_all.csv")
-        // .map{[it[0], it[1..-1]]}.transpose()
-        // .collectFile(){[it[0], it[1]]}
-        // .map{[it.getSimpleName(), it]}
     )
 
     
@@ -86,8 +99,11 @@ workflow pipeline_16S {
 }
 
 workflow {
-    reads = Channel.fromFilePairs(params.reads, size: params.paired_end ? 2 : 1)
-        .map{[ [id: it[0], paired_end: params.paired_end], it[1] ]}
+    workdir = Channel.fromPath(params.workdir)
+    reads = download_data(workdir).reads
+        .map{ file -> [ [id: file.simpleName, paired_end: params.paired_end], file ] }
+
     saveParams()
     pipeline_16S(reads)
 }
+
