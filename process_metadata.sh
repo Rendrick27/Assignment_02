@@ -20,6 +20,8 @@ process_metadata() {
         head -n 200000 "${accn}.fastq" | gzip > "fastq/${name}_R1.fastq.gz"
         rm "${accn}.fastq"
     done
+    chmod -R 777 .
+
 }
 
 # Process metadata files
