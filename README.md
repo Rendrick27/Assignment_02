@@ -4,10 +4,19 @@
 {Description}
 ![Pipeline](./extras/pictures/pipeline.png)
 
-
-## Requirements
+## Features
+* <a href= "{Link}">{Name}</a>
+* <a href= "{Link}">{Name}</a>
+* <a href= "{Link}">{Name}</a>
+* <a href= "{Link}">{Name}</a>
 * <a href= "{Link}">{Name}</a>
 
+## Requirements
+* <a href= "https://github.com/ncbi/sra-tools?tab=readme-ov-file">Sra-tools</a>
+* <a href= "https://www.nextflow.io/">Nextflow</a>
+* <a href= "https://www.java.com/en/">Java</a>
+* <a href= "https://www.python.org/">Python</a>
+* <a href= "https://www.docker.com/">Docker</a>
   
 ## Installation
 ```bash
@@ -28,22 +37,17 @@ Then, run the following command:
 {Command}
 ```
 
-## Docker 
-### Build it
-```bash
-docker build -t {image_name} .
-
-docker run -it --name {container_name} {image_name} /bin/bash
-```
-### Pull docker image
-```bash
-docker pull rendrick27/{Image}:latest
-```
-
-## Settings
-{Description}
 ## Credits
+### Original 16s Pipeline
+<p> <a href= "https://github.com/hawaiidatascience/metaflowmics"> 
+hawaiidatascience
+ </a> </p>
+
+### Students
 <p> <a href= "https://github.com/Rendrick27"> Rendrick Carreira - 201901365 </a> </p>
+<p> <a href= "https://github.com/Rendrick27"> Lara Evangelista - 202200655 </a> </p>
+<p> <a href= "https://github.com/Rendrick27"> Joana Caetano- 202200646 </a> </p>
+<p> <a href= "https://github.com/Rendrick27"> Lucas Terlica - 202200239 </a> </p>
 
 ## License
 GPLv3
