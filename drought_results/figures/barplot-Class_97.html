@@ -1,0 +1,554 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+  
+  <head>
+    
+      <meta charset="utf-8">
+      <title>barplot-Class_97</title>
+      
+      
+        
+          
+        <style>
+            table.panel-df {
+                    margin-left: auto;
+                    margin-right: auto;
+                    border: none;
+                    border-collapse: collapse;
+                    border-spacing: 0;
+                    color: black;
+                    font-size: 12px;
+                    table-layout: fixed;
+                    width: 100%;
+                }
+
+                .panel-df tr, .panel-df th, .panel-df td {
+                    text-align: right;
+                    vertical-align: middle;
+                    padding: 0.5em 0.5em !important;
+                    line-height: normal;
+                    white-space: normal;
+                    max-width: none;
+                    border: none;
+                }
+
+                .panel-df tbody {
+                    display: table-row-group;
+                    vertical-align: middle;
+                    border-color: inherit;
+                }
+
+                .panel-df tbody tr:nth-child(odd) {
+                    background: #f5f5f5;
+                }
+
+                .panel-df thead {
+                    border-bottom: 1px solid black;
+                    vertical-align: bottom;
+                }
+
+                .panel-df tr:hover {
+                    background: lightblue !important;
+                    cursor: pointer;
+                }
+
+        </style>
+        <style>
+            .json-formatter-row {
+                  font-family: monospace;
+                }
+                .json-formatter-row,
+                .json-formatter-row a,
+                .json-formatter-row a:hover {
+                  color: black;
+                  text-decoration: none;
+                }
+                .json-formatter-row .json-formatter-row {
+                  margin-left: 1rem;
+                }
+                .json-formatter-row .json-formatter-children.json-formatter-empty {
+                  opacity: 0.5;
+                  margin-left: 1rem;
+                }
+                .json-formatter-row .json-formatter-children.json-formatter-empty:after {
+                  display: none;
+                }
+                .json-formatter-row .json-formatter-children.json-formatter-empty.json-formatter-object:after {
+                  content: "No properties";
+                }
+                .json-formatter-row .json-formatter-children.json-formatter-empty.json-formatter-array:after {
+                  content: "[]";
+                }
+                .json-formatter-row .json-formatter-string,
+                .json-formatter-row .json-formatter-stringifiable {
+                  color: green;
+                  white-space: pre;
+                  word-wrap: break-word;
+                }
+                .json-formatter-row .json-formatter-number {
+                  color: blue;
+                }
+                .json-formatter-row .json-formatter-boolean {
+                  color: red;
+                }
+                .json-formatter-row .json-formatter-null {
+                  color: #855A00;
+                }
+                .json-formatter-row .json-formatter-undefined {
+                  color: #ca0b69;
+                }
+                .json-formatter-row .json-formatter-function {
+                  color: #FF20ED;
+                }
+                .json-formatter-row .json-formatter-date {
+                  background-color: rgba(0, 0, 0, 0.05);
+                }
+                .json-formatter-row .json-formatter-url {
+                  text-decoration: underline;
+                  color: blue;
+                  cursor: pointer;
+                }
+                .json-formatter-row .json-formatter-bracket {
+                  color: blue;
+                }
+                .json-formatter-row .json-formatter-key {
+                  color: #00008B;
+                  padding-right: 0.2rem;
+                }
+                .json-formatter-row .json-formatter-toggler-link {
+                  cursor: pointer;
+                }
+                .json-formatter-row .json-formatter-toggler {
+                  line-height: 1.2rem;
+                  font-size: 0.7rem;
+                  vertical-align: middle;
+                  opacity: 0.6;
+                  cursor: pointer;
+                  padding-right: 0.2rem;
+                }
+                .json-formatter-row .json-formatter-toggler:after {
+                  display: inline-block;
+                  transition: transform 100ms ease-in;
+                  content: "\25BA";
+                }
+                .json-formatter-row > a > .json-formatter-preview-text {
+                  opacity: 0;
+                  transition: opacity 0.15s ease-in;
+                  font-style: italic;
+                }
+                .json-formatter-row:hover > a > .json-formatter-preview-text {
+                  opacity: 0.6;
+                }
+                .json-formatter-row.json-formatter-open > .json-formatter-toggler-link .json-formatter-toggler:after {
+                  transform: rotate(90deg);
+                }
+                .json-formatter-row.json-formatter-open > .json-formatter-children:after {
+                  display: inline-block;
+                }
+                .json-formatter-row.json-formatter-open > a > .json-formatter-preview-text {
+                  display: none;
+                }
+                .json-formatter-row.json-formatter-open.json-formatter-empty:after {
+                  display: block;
+                }
+                .json-formatter-dark.json-formatter-row {
+                  font-family: monospace;
+                }
+                .json-formatter-dark.json-formatter-row,
+                .json-formatter-dark.json-formatter-row a,
+                .json-formatter-dark.json-formatter-row a:hover {
+                  color: white;
+                  text-decoration: none;
+                }
+                .json-formatter-dark.json-formatter-row .json-formatter-row {
+                  margin-left: 1rem;
+                }
+                .json-formatter-dark.json-formatter-row .json-formatter-children.json-formatter-empty {
+                  opacity: 0.5;
+                  margin-left: 1rem;
+                }
+                .json-formatter-dark.json-formatter-row .json-formatter-children.json-formatter-empty:after {
+                  display: none;
+                }
+                .json-formatter-dark.json-formatter-row .json-formatter-children.json-formatter-empty.json-formatter-object:after {
+                  content: "No properties";
+                }
+                .json-formatter-dark.json-formatter-row .json-formatter-children.json-formatter-empty.json-formatter-array:after {
+                  content: "[]";
+                }
+                .json-formatter-dark.json-formatter-row .json-formatter-string,
+                .json-formatter-dark.json-formatter-row .json-formatter-stringifiable {
+                  color: #31F031;
+                  white-space: pre;
+                  word-wrap: break-word;
+                }
+                .json-formatter-dark.json-formatter-row .json-formatter-number {
+                  color: #66C2FF;
+                }
+                .json-formatter-dark.json-formatter-row .json-formatter-boolean {
+                  color: #EC4242;
+                }
+                .json-formatter-dark.json-formatter-row .json-formatter-null {
+                  color: #EEC97D;
+                }
+                .json-formatter-dark.json-formatter-row .json-formatter-undefined {
+                  color: #ef8fbe;
+                }
+                .json-formatter-dark.json-formatter-row .json-formatter-function {
+                  color: #FD48CB;
+                }
+                .json-formatter-dark.json-formatter-row .json-formatter-date {
+                  background-color: rgba(255, 255, 255, 0.05);
+                }
+                .json-formatter-dark.json-formatter-row .json-formatter-url {
+                  text-decoration: underline;
+                  color: #027BFF;
+                  cursor: pointer;
+                }
+                .json-formatter-dark.json-formatter-row .json-formatter-bracket {
+                  color: #9494FF;
+                }
+                .json-formatter-dark.json-formatter-row .json-formatter-key {
+                  color: #23A0DB;
+                  padding-right: 0.2rem;
+                }
+                .json-formatter-dark.json-formatter-row .json-formatter-toggler-link {
+                  cursor: pointer;
+                }
+                .json-formatter-dark.json-formatter-row .json-formatter-toggler {
+                  line-height: 1.2rem;
+                  font-size: 0.7rem;
+                  vertical-align: middle;
+                  opacity: 0.6;
+                  cursor: pointer;
+                  padding-right: 0.2rem;
+                }
+                .json-formatter-dark.json-formatter-row .json-formatter-toggler:after {
+                  display: inline-block;
+                  transition: transform 100ms ease-in;
+                  content: "\25BA";
+                }
+                .json-formatter-dark.json-formatter-row > a > .json-formatter-preview-text {
+                  opacity: 0;
+                  transition: opacity 0.15s ease-in;
+                  font-style: italic;
+                }
+                .json-formatter-dark.json-formatter-row:hover > a > .json-formatter-preview-text {
+                  opacity: 0.6;
+                }
+                .json-formatter-dark.json-formatter-row.json-formatter-open > .json-formatter-toggler-link .json-formatter-toggler:after {
+                  transform: rotate(90deg);
+                }
+                .json-formatter-dark.json-formatter-row.json-formatter-open > .json-formatter-children:after {
+                  display: inline-block;
+                }
+                .json-formatter-dark.json-formatter-row.json-formatter-open > a > .json-formatter-preview-text {
+                  display: none;
+                }
+                .json-formatter-dark.json-formatter-row.json-formatter-open.json-formatter-empty:after {
+                  display: block;
+                }
+
+        </style>
+        <style>
+            .codehilite .hll { background-color: #ffffcc }
+                .codehilite  { background: #f8f8f8; }
+                .codehilite .c { color: #408080; font-style: italic } /* Comment */
+                .codehilite .err { border: 1px solid #FF0000 } /* Error */
+                .codehilite .k { color: #008000; font-weight: bold } /* Keyword */
+                .codehilite .o { color: #666666 } /* Operator */
+                .codehilite .ch { color: #408080; font-style: italic } /* Comment.Hashbang */
+                .codehilite .cm { color: #408080; font-style: italic } /* Comment.Multiline */
+                .codehilite .cp { color: #BC7A00 } /* Comment.Preproc */
+                .codehilite .cpf { color: #408080; font-style: italic } /* Comment.PreprocFile */
+                .codehilite .c1 { color: #408080; font-style: italic } /* Comment.Single */
+                .codehilite .cs { color: #408080; font-style: italic } /* Comment.Special */
+                .codehilite .gd { color: #A00000 } /* Generic.Deleted */
+                .codehilite .ge { font-style: italic } /* Generic.Emph */
+                .codehilite .gr { color: #FF0000 } /* Generic.Error */
+                .codehilite .gh { color: #000080; font-weight: bold } /* Generic.Heading */
+                .codehilite .gi { color: #00A000 } /* Generic.Inserted */
+                .codehilite .go { color: #888888 } /* Generic.Output */
+                .codehilite .gp { color: #000080; font-weight: bold } /* Generic.Prompt */
+                .codehilite .gs { font-weight: bold } /* Generic.Strong */
+                .codehilite .gu { color: #800080; font-weight: bold } /* Generic.Subheading */
+                .codehilite .gt { color: #0044DD } /* Generic.Traceback */
+                .codehilite .kc { color: #008000; font-weight: bold } /* Keyword.Constant */
+                .codehilite .kd { color: #008000; font-weight: bold } /* Keyword.Declaration */
+                .codehilite .kn { color: #008000; font-weight: bold } /* Keyword.Namespace */
+                .codehilite .kp { color: #008000 } /* Keyword.Pseudo */
+                .codehilite .kr { color: #008000; font-weight: bold } /* Keyword.Reserved */
+                .codehilite .kt { color: #B00040 } /* Keyword.Type */
+                .codehilite .m { color: #666666 } /* Literal.Number */
+                .codehilite .s { color: #BA2121 } /* Literal.String */
+                .codehilite .na { color: #7D9029 } /* Name.Attribute */
+                .codehilite .nb { color: #008000 } /* Name.Builtin */
+                .codehilite .nc { color: #0000FF; font-weight: bold } /* Name.Class */
+                .codehilite .no { color: #880000 } /* Name.Constant */
+                .codehilite .nd { color: #AA22FF } /* Name.Decorator */
+                .codehilite .ni { color: #999999; font-weight: bold } /* Name.Entity */
+                .codehilite .ne { color: #D2413A; font-weight: bold } /* Name.Exception */
+                .codehilite .nf { color: #0000FF } /* Name.Function */
+                .codehilite .nl { color: #A0A000 } /* Name.Label */
+                .codehilite .nn { color: #0000FF; font-weight: bold } /* Name.Namespace */
+                .codehilite .nt { color: #008000; font-weight: bold } /* Name.Tag */
+                .codehilite .nv { color: #19177C } /* Name.Variable */
+                .codehilite .ow { color: #AA22FF; font-weight: bold } /* Operator.Word */
+                .codehilite .w { color: #bbbbbb } /* Text.Whitespace */
+                .codehilite .mb { color: #666666 } /* Literal.Number.Bin */
+                .codehilite .mf { color: #666666 } /* Literal.Number.Float */
+                .codehilite .mh { color: #666666 } /* Literal.Number.Hex */
+                .codehilite .mi { color: #666666 } /* Literal.Number.Integer */
+                .codehilite .mo { color: #666666 } /* Literal.Number.Oct */
+                .codehilite .sa { color: #BA2121 } /* Literal.String.Affix */
+                .codehilite .sb { color: #BA2121 } /* Literal.String.Backtick */
+                .codehilite .sc { color: #BA2121 } /* Literal.String.Char */
+                .codehilite .dl { color: #BA2121 } /* Literal.String.Delimiter */
+                .codehilite .sd { color: #BA2121; font-style: italic } /* Literal.String.Doc */
+                .codehilite .s2 { color: #BA2121 } /* Literal.String.Double */
+                .codehilite .se { color: #BB6622; font-weight: bold } /* Literal.String.Escape */
+                .codehilite .sh { color: #BA2121 } /* Literal.String.Heredoc */
+                .codehilite .si { color: #BB6688; font-weight: bold } /* Literal.String.Interpol */
+                .codehilite .sx { color: #008000 } /* Literal.String.Other */
+                .codehilite .sr { color: #BB6688 } /* Literal.String.Regex */
+                .codehilite .s1 { color: #BA2121 } /* Literal.String.Single */
+                .codehilite .ss { color: #19177C } /* Literal.String.Symbol */
+                .codehilite .bp { color: #008000 } /* Name.Builtin.Pseudo */
+                .codehilite .fm { color: #0000FF } /* Name.Function.Magic */
+                .codehilite .vc { color: #19177C } /* Name.Variable.Class */
+                .codehilite .vg { color: #19177C } /* Name.Variable.Global */
+                .codehilite .vi { color: #19177C } /* Name.Variable.Instance */
+                .codehilite .vm { color: #19177C } /* Name.Variable.Magic */
+                .codehilite .il { color: #666666 } /* Literal.Number.Integer.Long */
+
+                .markdown h1 { margin-block-start: 0.34em }
+                .markdown h2 { margin-block-start: 0.42em }
+                .markdown h3 { margin-block-start: 0.5em }
+                .markdown h4 { margin-block-start: 0.67em }
+                .markdown h5 { margin-block-start: 0.84em }
+                .markdown h6 { margin-block-start: 1.17em }
+                .markdown ul { padding-inline-start: 2em }
+                .markdown ol { padding-inline-start: 2em }
+                .markdown strong { font-weight: 600 }
+                .markdown a { color: -webkit-link }
+                .markdown a { color: -moz-hyperlinkText }
+
+        </style>
+        <style>
+            .panel-widget-box {
+                	min-height: 20px;
+                	background-color: #f5f5f5;
+                	border: 1px solid #e3e3e3 !important;
+                	border-radius: 4px;
+                	-webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.05);
+                	box-shadow: inset 0 1px 1px rgba(0,0,0,.05);
+                	overflow-x: hidden;
+                	overflow-y: hidden;
+                }
+
+                .scrollable {
+                  overflow: scroll;
+                }
+
+                progress {
+                	appearance: none;
+                	-moz-appearance: none;
+                	-webkit-appearance: none;
+
+                	border: none;
+                	height: 20px;
+                	background-color: whiteSmoke;
+                	border-radius: 3px;
+                	box-shadow: 0 2px 3px rgba(0,0,0,.5) inset;
+                	color: royalblue;
+                	position: relative;
+                	margin: 0 0 1.5em;
+                }
+
+                progress[value]::-webkit-progress-bar {
+                	background-color: whiteSmoke;
+                	border-radius: 3px;
+                	box-shadow: 0 2px 3px rgba(0,0,0,.5) inset;
+                }
+
+                progress[value]::-webkit-progress-value {
+                	position: relative;
+
+                	background-size: 35px 20px, 100% 100%, 100% 100%;
+                	border-radius:3px;
+                }
+
+                progress.active:not([value])::before {
+                	background-position: 10%;
+                	animation-name: stripes;
+                	animation-duration: 3s;
+                	animation-timing-function: linear;
+                	animation-iteration-count: infinite;
+                }
+
+                progress[value]::-moz-progress-bar {
+                	background-size: 35px 20px, 100% 100%, 100% 100%;
+                	border-radius:3px;
+                }
+
+                progress:not([value])::-moz-progress-bar {
+                	border-radius:3px;
+                	background:
+                	linear-gradient(-45deg, transparent 33%, rgba(0, 0, 0, 0.2) 33%, rgba(0, 0, 0, 0.2) 66%, transparent 66%) left/2.5em 1.5em;
+
+                }
+
+                progress.active:not([value])::-moz-progress-bar {
+                	background-position: 10%;
+                	animation-name: stripes;
+                	animation-duration: 3s;
+                	animation-timing-function: linear;
+                	animation-iteration-count: infinite;
+                }
+
+                progress.active:not([value])::-webkit-progress-bar {
+                	background-position: 10%;
+                	animation-name: stripes;
+                	animation-duration: 3s;
+                	animation-timing-function: linear;
+                	animation-iteration-count: infinite;
+                }
+
+                progress.primary[value]::-webkit-progress-value { background-color: #007bff; }
+                progress.primary:not([value])::before { background-color: #007bff; }
+                progress.primary:not([value])::-webkit-progress-bar { background-color: #007bff; }
+                progress.primary::-moz-progress-bar { background-color: #007bff; }
+
+                progress.secondary[value]::-webkit-progress-value { background-color: #6c757d; }
+                progress.secondary:not([value])::before { background-color: #6c757d; }
+                progress.secondary:not([value])::-webkit-progress-bar { background-color: #6c757d; }
+                progress.secondary::-moz-progress-bar { background-color: #6c757d; }
+
+                progress.success[value]::-webkit-progress-value { background-color: #28a745; }
+                progress.success:not([value])::before { background-color: #28a745; }
+                progress.success:not([value])::-webkit-progress-bar { background-color: #28a745; }
+                progress.success::-moz-progress-bar { background-color: #28a745; }
+
+                progress.danger[value]::-webkit-progress-value { background-color: #dc3545; }
+                progress.danger:not([value])::before { background-color: #dc3545; }
+                progress.danger:not([value])::-webkit-progress-bar { background-color: #dc3545; }
+                progress.danger::-moz-progress-bar { background-color: #dc3545; }
+
+                progress.warning[value]::-webkit-progress-value { background-color: #ffc107; }
+                progress.warning:not([value])::before { background-color: #ffc107; }
+                progress.warning:not([value])::-webkit-progress-bar { background-color: #ffc107; }
+                progress.warning::-moz-progress-bar { background-color: #ffc107; }
+
+                progress.info[value]::-webkit-progress-value { background-color: #17a2b8; }
+                progress.info:not([value])::before { background-color: #17a2b8; }
+                progress.info:not([value])::-webkit-progress-bar { background-color: #17a2b8; }
+                progress.info::-moz-progress-bar { background-color: #17a2b8; }
+
+                progress.light[value]::-webkit-progress-value { background-color: #f8f9fa; }
+                progress.light:not([value])::before { background-color: #f8f9fa; }
+                progress.light:not([value])::-webkit-progress-bar { background-color: #f8f9fa; }
+                progress.light::-moz-progress-bar { background-color: #f8f9fa; }
+
+                progress.dark[value]::-webkit-progress-value { background-color: #343a40; }
+                progress.dark:not([value])::-webkit-progress-bar { background-color: #343a40; }
+                progress.dark:not([value])::before { background-color: #343a40; }
+                progress.dark::-moz-progress-bar { background-color: #343a40; }
+
+                progress:not([value])::-webkit-progress-bar {
+                	border-radius: 3px;
+                	background:
+                	linear-gradient(-45deg, transparent 33%, rgba(0, 0, 0, 0.2) 33%, rgba(0, 0, 0, 0.2) 66%, transparent 66%) left/2.5em 1.5em;
+                }
+                progress:not([value])::before {
+                	content:" ";
+                	position:absolute;
+                	height: 20px;
+                	top:0;
+                	left:0;
+                	right:0;
+                	bottom:0;
+                	border-radius: 3px;
+                	background:
+                	linear-gradient(-45deg, transparent 33%, rgba(0, 0, 0, 0.2) 33%, rgba(0, 0, 0, 0.2) 66%, transparent 66%) left/2.5em 1.5em;
+                }
+
+                @keyframes stripes {
+                  from {background-position: 0%}
+                  to {background-position: 100%}
+                }
+
+        </style>
+        
+        
+          
+        <script type="text/javascript" src="https://cdn.bokeh.org/bokeh/release/bokeh-2.1.1.min.js" integrity="sha384-kLr4fYcqcSpbuI95brIH3vnnYCquzzSxHPU6XGQCIkQRGJwhg0StNbj1eegrHs12" crossorigin="anonymous"></script>
+        <script type="text/javascript">
+            Bokeh.set_log_level("info");
+        </script>
+        
+      
+      
+    
+  </head>
+  
+  
+  <body>
+    
+      
+        
+          
+          
+            
+              <div class="bk-root" id="2c483678-d507-420e-97ed-bde1226784dc" data-root-id="1189"></div>
+            
+          
+        
+      
+      
+        <script type="application/json" id="1376">
+          {"9debc7d5-3f3b-4c89-8a18-63d039aab620":{"roots":{"references":[{"attributes":{"bottom_units":"screen","fill_alpha":0.5,"fill_color":"lightgrey","left_units":"screen","level":"overlay","line_alpha":1.0,"line_color":"black","line_dash":[4,4],"line_width":2,"right_units":"screen","top_units":"screen"},"id":"1215","type":"BoxAnnotation"},{"attributes":{},"id":"1210","type":"SaveTool"},{"attributes":{"margin":[5,5,5,5],"name":"HSpacer01747","sizing_mode":"stretch_width"},"id":"1190","type":"Spacer"},{"attributes":{"data_source":{"id":"1224"},"glyph":{"id":"1227"},"hover_glyph":null,"muted_glyph":{"id":"1229"},"nonselection_glyph":{"id":"1228"},"selection_glyph":null,"view":{"id":"1231"}},"id":"1230","type":"GlyphRenderer"},{"attributes":{"axis":{"id":"1203"},"grid_line_color":null,"ticker":null},"id":"1206","type":"Grid"},{"attributes":{"glyph_height":12,"items":[{"id":"1241"}],"label_height":12,"label_text_font_size":"12px","location":[30,0],"spacing":0},"id":"1240","type":"Legend"},{"attributes":{},"id":"1208","type":"CategoricalTicker"},{"attributes":{},"id":"1238","type":"UnionRenderers"},{"attributes":{},"id":"1235","type":"BasicTickFormatter"},{"attributes":{"active_drag":"auto","active_inspect":"auto","active_multi":null,"active_scroll":"auto","active_tap":"auto","tools":[{"id":"1193"},{"id":"1210"},{"id":"1211"},{"id":"1212"},{"id":"1213"},{"id":"1214"}]},"id":"1216","type":"Toolbar"},{"attributes":{},"id":"1225","type":"Selection"},{"attributes":{"text":"","text_color":{"value":"black"},"text_font_size":{"value":"12pt"}},"id":"1195","type":"Title"},{"attributes":{},"id":"1214","type":"ResetTool"},{"attributes":{"factors":["Soil_RNA_reincubated_soil_rainfed_rep4_R1","Soil_RNA_reincubated_soil_rainfed_rep3_R1","Soil_RNA_reincubated_soil_rainfed_rep2_R1","Soil_RNA_reincubated_soil_rainfed_rep1_R1","Soil_RNA_reincubated_soil_irrigated_rep4_R1","Soil_RNA_reincubated_soil_irrigated_rep2_R1","Soil_RNA_reincubated_soil_irrigated_rep1_R1","Soil_RNA_incubated_soil_rainfed_rep2_R1","Soil_RNA_incubated_soil_irrigated_rep4_R1","Soil_RNA_incubated_soil_irrigated_rep3_R1","Soil_RNA_incubated_soil_irrigated_rep2_R1","Soil_RNA_incubated_soil_irrigated_rep1_R1","Soil_RNA_fresh_soil_rainfed_rep4_R1","Soil_RNA_fresh_soil_rainfed_rep2_R1","Soil_RNA_fresh_soil_rainfed_rep1_R1","Soil_RNA_fresh_soil_irrigated_rep4_R1","Soil_RNA_dried_soil_rainfed_rep4_R1","Soil_RNA_dried_soil_rainfed_rep3_R1","Soil_RNA_dried_soil_rainfed_rep2_R1","Soil_RNA_dried_soil_rainfed_rep1_R1","Soil_RNA_dreid_soil_irrigated_rep4_R1","Soil_RNA_dreid_soil_irrigated_rep3_R1","Soil_RNA_dreid_soil_irrigated_rep2_R1","Soil_RNA_dreid_soil_irrigated_rep1_R1","Soil_DNA_reincubated_soil_rainfed_rep4_R1","Soil_DNA_reincubated_soil_rainfed_rep3_R1","Soil_DNA_reincubated_soil_rainfed_rep2_R1","Soil_DNA_reincubated_soil_rainfed_rep1_R1","Soil_DNA_reincubated_soil_irrigated_rep4_R1","Soil_DNA_reincubated_soil_irrigated_rep3_R1","Soil_DNA_reincubated_soil_irrigated_rep2_R1","Soil_DNA_reincubated_soil_irrigated_rep1_R1","Soil_DNA_incubated_soil_rainfed_rep4_R1","Soil_DNA_incubated_soil_rainfed_rep3_R1","Soil_DNA_incubated_soil_rainfed_rep2_R1","Soil_DNA_incubated_soil_rainfed_rep1_R1","Soil_DNA_incubated_soil_irrigated_rep4_R1","Soil_DNA_incubated_soil_irrigated_rep3_R1","Soil_DNA_incubated_soil_irrigated_rep2_R1","Soil_DNA_incubated_soil_irrigated_rep1_R1","Soil_DNA_fresh_soil_rainfed_rep4_R1","Soil_DNA_fresh_soil_rainfed_rep3_R1","Soil_DNA_fresh_soil_rainfed_rep2_R1","Soil_DNA_fresh_soil_rainfed_rep1_R1","Soil_DNA_fresh_soil_irrigated_rep4_R1","Soil_DNA_fresh_soil_irrigated_rep3_R1","Soil_DNA_fresh_soil_irrigated_rep2_R1","Soil_DNA_fresh_soil_irrigated_rep1_R1","Soil_DNA_dried_soil_rainfed_rep4_R1","Soil_DNA_dried_soil_rainfed_rep3_R1","Soil_DNA_dried_soil_rainfed_rep2_R1","Soil_DNA_dried_soil_rainfed_rep1_R1","Soil_DNA_dreid_soil_irrigated_rep4_R1","Soil_DNA_dreid_soil_irrigated_rep3_R1","Soil_DNA_dreid_soil_irrigated_rep2_R1","Soil_DNA_dreid_soil_irrigated_rep1_R1"],"tags":[[["Group","Group",null]]]},"id":"1192","type":"FactorRange"},{"attributes":{},"id":"1212","type":"WheelZoomTool"},{"attributes":{"data":{"Class":["Gammaproteobacteria","Gammaproteobacteria","Gammaproteobacteria","Gammaproteobacteria","Gammaproteobacteria","Gammaproteobacteria","Gammaproteobacteria","Gammaproteobacteria","Gammaproteobacteria","Gammaproteobacteria","Gammaproteobacteria","Gammaproteobacteria","Gammaproteobacteria","Gammaproteobacteria","Gammaproteobacteria","Gammaproteobacteria","Gammaproteobacteria","Gammaproteobacteria","Gammaproteobacteria","Gammaproteobacteria","Gammaproteobacteria","Gammaproteobacteria","Gammaproteobacteria","Gammaproteobacteria","Gammaproteobacteria","Gammaproteobacteria","Gammaproteobacteria","Gammaproteobacteria","Gammaproteobacteria","Gammaproteobacteria","Gammaproteobacteria","Gammaproteobacteria","Gammaproteobacteria","Gammaproteobacteria","Gammaproteobacteria","Gammaproteobacteria","Gammaproteobacteria","Gammaproteobacteria","Gammaproteobacteria","Gammaproteobacteria","Gammaproteobacteria","Gammaproteobacteria","Gammaproteobacteria","Gammaproteobacteria","Gammaproteobacteria","Gammaproteobacteria","Gammaproteobacteria","Gammaproteobacteria","Gammaproteobacteria","Gammaproteobacteria","Gammaproteobacteria","Gammaproteobacteria","Gammaproteobacteria","Alphaproteobacteria","Alphaproteobacteria","Alphaproteobacteria","Alphaproteobacteria","Alphaproteobacteria","Alphaproteobacteria","Alphaproteobacteria","Alphaproteobacteria","Alphaproteobacteria","Alphaproteobacteria","Alphaproteobacteria","Alphaproteobacteria","Alphaproteobacteria","Alphaproteobacteria","Alphaproteobacteria","Alphaproteobacteria","Alphaproteobacteria","Alphaproteobacteria","Alphaproteobacteria","Alphaproteobacteria","Alphaproteobacteria","Alphaproteobacteria","Alphaproteobacteria","Alphaproteobacteria","Alphaproteobacteria","Alphaproteobacteria","Alphaproteobacteria","Alphaproteobacteria","Alphaproteobacteria","Alphaproteobacteria","Alphaproteobacteria","Alphaproteobacteria","Alphaproteobacteria","Alphaproteobacteria","Alphaproteobacteria","Alphaproteobacteria","Alphaproteobacteria","Alphaproteobacteria","Alphaproteobacteria","Alphaproteobacteria","Alphaproteobacteria","Alphaproteobacteria","Alphaproteobacteria","Alphaproteobacteria","Alphaproteobacteria","Alphaproteobacteria","Alphaproteobacteria","Alphaproteobacteria","Alphaproteobacteria","Alphaproteobacteria","Alphaproteobacteria","Alphaproteobacteria","Alphaproteobacteria","Alphaproteobacteria","Alphaproteobacteria","Alphaproteobacteria"],"Group":["Soil_DNA_incubated_soil_irrigated_rep2_R1","Soil_DNA_incubated_soil_irrigated_rep1_R1","Soil_RNA_dried_soil_rainfed_rep1_R1","Soil_RNA_incubated_soil_irrigated_rep1_R1","Soil_DNA_incubated_soil_irrigated_rep3_R1","Soil_DNA_incubated_soil_irrigated_rep4_R1","Soil_RNA_fresh_soil_rainfed_rep4_R1","Soil_DNA_incubated_soil_rainfed_rep1_R1","Soil_DNA_incubated_soil_rainfed_rep2_R1","Soil_RNA_fresh_soil_rainfed_rep2_R1","Soil_DNA_incubated_soil_rainfed_rep3_R1","Soil_DNA_incubated_soil_rainfed_rep4_R1","Soil_RNA_fresh_soil_rainfed_rep1_R1","Soil_DNA_reincubated_soil_irrigated_rep1_R1","Soil_RNA_incubated_soil_irrigated_rep2_R1","Soil_DNA_reincubated_soil_irrigated_rep2_R1","Soil_DNA_reincubated_soil_irrigated_rep3_R1","Soil_RNA_reincubated_soil_rainfed_rep3_R1","Soil_DNA_reincubated_soil_irrigated_rep4_R1","Soil_DNA_reincubated_soil_rainfed_rep1_R1","Soil_RNA_dried_soil_rainfed_rep4_R1","Soil_DNA_reincubated_soil_rainfed_rep2_R1","Soil_DNA_reincubated_soil_rainfed_rep3_R1","Soil_RNA_dried_soil_rainfed_rep3_R1","Soil_DNA_reincubated_soil_rainfed_rep4_R1","Soil_RNA_dreid_soil_irrigated_rep1_R1","Soil_RNA_dried_soil_rainfed_rep2_R1","Soil_RNA_dreid_soil_irrigated_rep2_R1","Soil_RNA_dreid_soil_irrigated_rep3_R1","Soil_RNA_fresh_soil_irrigated_rep4_R1","Soil_DNA_fresh_soil_rainfed_rep4_R1","Soil_RNA_dreid_soil_irrigated_rep4_R1","Soil_DNA_fresh_soil_rainfed_rep3_R1","Soil_DNA_dreid_soil_irrigated_rep1_R1","Soil_DNA_dreid_soil_irrigated_rep2_R1","Soil_RNA_reincubated_soil_rainfed_rep2_R1","Soil_DNA_dreid_soil_irrigated_rep3_R1","Soil_DNA_dreid_soil_irrigated_rep4_R1","Soil_DNA_dried_soil_rainfed_rep1_R1","Soil_DNA_dried_soil_rainfed_rep2_R1","Soil_RNA_reincubated_soil_irrigated_rep2_R1","Soil_DNA_dried_soil_rainfed_rep3_R1","Soil_RNA_reincubated_soil_irrigated_rep1_R1","Soil_DNA_fresh_soil_irrigated_rep1_R1","Soil_DNA_fresh_soil_irrigated_rep2_R1","Soil_DNA_dried_soil_rainfed_rep4_R1","Soil_RNA_incubated_soil_irrigated_rep3_R1","Soil_DNA_fresh_soil_irrigated_rep3_R1","Soil_DNA_fresh_soil_rainfed_rep2_R1","Soil_DNA_fresh_soil_irrigated_rep4_R1","Soil_RNA_incubated_soil_irrigated_rep4_R1","Soil_RNA_incubated_soil_rainfed_rep2_R1","Soil_DNA_fresh_soil_rainfed_rep1_R1","Soil_RNA_fresh_soil_rainfed_rep2_R1","Soil_RNA_dried_soil_rainfed_rep2_R1","Soil_RNA_reincubated_soil_rainfed_rep3_R1","Soil_RNA_incubated_soil_irrigated_rep2_R1","Soil_RNA_dried_soil_rainfed_rep3_R1","Soil_RNA_incubated_soil_irrigated_rep4_R1","Soil_RNA_reincubated_soil_rainfed_rep2_R1","Soil_RNA_incubated_soil_irrigated_rep1_R1","Soil_RNA_reincubated_soil_rainfed_rep1_R1","Soil_RNA_reincubated_soil_irrigated_rep4_R1","Soil_RNA_fresh_soil_irrigated_rep4_R1","Soil_RNA_incubated_soil_rainfed_rep2_R1","Soil_RNA_reincubated_soil_irrigated_rep2_R1","Soil_RNA_incubated_soil_irrigated_rep3_R1","Soil_RNA_fresh_soil_rainfed_rep1_R1","Soil_RNA_fresh_soil_rainfed_rep4_R1","Soil_RNA_reincubated_soil_irrigated_rep1_R1","Soil_RNA_dried_soil_rainfed_rep4_R1","Soil_DNA_dreid_soil_irrigated_rep1_R1","Soil_DNA_reincubated_soil_irrigated_rep4_R1","Soil_RNA_dreid_soil_irrigated_rep4_R1","Soil_DNA_fresh_soil_rainfed_rep3_R1","Soil_DNA_fresh_soil_rainfed_rep2_R1","Soil_DNA_fresh_soil_rainfed_rep1_R1","Soil_DNA_fresh_soil_irrigated_rep4_R1","Soil_DNA_fresh_soil_irrigated_rep3_R1","Soil_DNA_fresh_soil_irrigated_rep2_R1","Soil_DNA_fresh_soil_rainfed_rep4_R1","Soil_DNA_fresh_soil_irrigated_rep1_R1","Soil_DNA_dried_soil_rainfed_rep3_R1","Soil_DNA_dried_soil_rainfed_rep2_R1","Soil_DNA_dried_soil_rainfed_rep1_R1","Soil_DNA_dreid_soil_irrigated_rep4_R1","Soil_DNA_dreid_soil_irrigated_rep3_R1","Soil_DNA_dreid_soil_irrigated_rep2_R1","Soil_DNA_dried_soil_rainfed_rep4_R1","Soil_DNA_incubated_soil_irrigated_rep1_R1","Soil_DNA_incubated_soil_irrigated_rep2_R1","Soil_DNA_incubated_soil_irrigated_rep3_R1","Soil_RNA_dreid_soil_irrigated_rep3_R1","Soil_RNA_dreid_soil_irrigated_rep2_R1","Soil_RNA_dreid_soil_irrigated_rep1_R1","Soil_DNA_reincubated_soil_rainfed_rep4_R1","Soil_DNA_reincubated_soil_rainfed_rep3_R1","Soil_DNA_reincubated_soil_rainfed_rep2_R1","Soil_DNA_reincubated_soil_rainfed_rep1_R1","Soil_DNA_reincubated_soil_irrigated_rep3_R1","Soil_DNA_reincubated_soil_irrigated_rep2_R1","Soil_DNA_reincubated_soil_irrigated_rep1_R1","Soil_DNA_incubated_soil_rainfed_rep4_R1","Soil_DNA_incubated_soil_rainfed_rep3_R1","Soil_DNA_incubated_soil_rainfed_rep2_R1","Soil_DNA_incubated_soil_rainfed_rep1_R1","Soil_DNA_incubated_soil_irrigated_rep4_R1","Soil_RNA_dried_soil_rainfed_rep1_R1","Soil_RNA_reincubated_soil_rainfed_rep4_R1"],"Kingdom":["Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria"],"Phylum":["Proteobacteria","Proteobacteria","Proteobacteria","Proteobacteria","Proteobacteria","Proteobacteria","Proteobacteria","Proteobacteria","Proteobacteria","Proteobacteria","Proteobacteria","Proteobacteria","Proteobacteria","Proteobacteria","Proteobacteria","Proteobacteria","Proteobacteria","Proteobacteria","Proteobacteria","Proteobacteria","Proteobacteria","Proteobacteria","Proteobacteria","Proteobacteria","Proteobacteria","Proteobacteria","Proteobacteria","Proteobacteria","Proteobacteria","Proteobacteria","Proteobacteria","Proteobacteria","Proteobacteria","Proteobacteria","Proteobacteria","Proteobacteria","Proteobacteria","Proteobacteria","Proteobacteria","Proteobacteria","Proteobacteria","Proteobacteria","Proteobacteria","Proteobacteria","Proteobacteria","Proteobacteria","Proteobacteria","Proteobacteria","Proteobacteria","Proteobacteria","Proteobacteria","Proteobacteria","Proteobacteria","Proteobacteria","Proteobacteria","Proteobacteria","Proteobacteria","Proteobacteria","Proteobacteria","Proteobacteria","Proteobacteria","Proteobacteria","Proteobacteria","Proteobacteria","Proteobacteria","Proteobacteria","Proteobacteria","Proteobacteria","Proteobacteria","Proteobacteria","Proteobacteria","Proteobacteria","Proteobacteria","Proteobacteria","Proteobacteria","Proteobacteria","Proteobacteria","Proteobacteria","Proteobacteria","Proteobacteria","Proteobacteria","Proteobacteria","Proteobacteria","Proteobacteria","Proteobacteria","Proteobacteria","Proteobacteria","Proteobacteria","Proteobacteria","Proteobacteria","Proteobacteria","Proteobacteria","Proteobacteria","Proteobacteria","Proteobacteria","Proteobacteria","Proteobacteria","Proteobacteria","Proteobacteria","Proteobacteria","Proteobacteria","Proteobacteria","Proteobacteria","Proteobacteria","Proteobacteria","Proteobacteria","Proteobacteria","Proteobacteria","Proteobacteria"],"bottom":{"__ndarray__":"AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAKU0UToM8ug/FYg1RMLe3D/mA/cR3EfQP82EWZMn2dk/OANx1Se52T+FCaevGVjfP5rUdvZwntg/06L4s7e04D8AAAAAAAAAAAAAAAAAAAAAA6Eh/4hQ6T9ab/byFwbiP8yVIGzyUuA/Xs0S41Om3T8al1QrkFHoPzht9OlPHuo/lMy+Aozk4z9pSD7CUFvXPxsPrWf+geE/c9ykBLhb4j8w5jpGca7TP2yCNfsAdec/SgunRp5x6D+SgAiZwq7pP7aPsh3JQek/2qcLeh0V6j9sZ+59GNvnP4NPIyz3tOc/2XVFUdcV5T/ZCmnZ2uvhPyQoPmdqueA/T+CqIOhz4T/i+VkNscfgPyr0b6ZHYOE/6WumhHO83T9BbnVGKubiPyPqNKWqdeE/+pndBev84D+t5ApicgXhPzO5CIqra9U/B3tH+Xh+yz9NLnEwKZzgPx83wDl1uOI//ZMO5Mrl3D+sOE/VXYPhP9pMew/c7uA/cyVHoZES5T8DfaWxG1XmP9xWKfzOoeQ/DOrOhezk4T8PI6IR84DiPybU2hV+EuI/fJsCv7Jf4z9MqND4IEnhP+NHtmYKsNY/AAAAAAAAAAA=","dtype":"float64","order":"little","shape":[109]},"count":[1367,2183,698,2686,1450,1405,6066,1605,1548,3819,1637,1639,4885,1677,1416,1058,808,464,759,735,708,978,666,793,695,1484,535,450,491,4896,4125,695,3251,1405,729,537,745,925,889,889,529,1096,1855,3599,4013,1030,1312,4941,3814,4300,1601,2035,4350,1080,651,1360,2090,1180,1668,859,2459,949,728,1293,1578,508,1520,1543,1366,1129,1232,1163,564,1565,1184,1179,1070,1148,1121,1370,1443,1863,861,812,741,839,627,840,714,1818,1208,1276,976,1645,1375,493,809,809,654,419,458,924,1292,1194,1193,1046,1196,1271,608],"relabund":{"__ndarray__":"+pndBev84D8j6jSlqnXhP+NHtmYKsNY/06L4s7e04D+t5ApicgXhP0yo0PggSeE/OG306U8e6j98mwK/sl/jPybU2hV+EuI/pTRROgzy6D8PI6IR84DiPwzqzoXs5OE/GpdUK5BR6D/cVin8zqHkP82EWZMn2dk/A32lsRtV5j9zJUehkRLlP+YD9xHcR9A/c9ykBLhb4j/aTHsP3O7gP2lIPsJQW9c/rDhP1V2D4T/9kw7kyuXcPzgDcdUnudk/HzfAOXW44j9NLnEwKZzgPxWINUTC3tw/B3tH+Xh+yz8zuQiKq2vVPwOhIf+IUOk/g08jLPe05z8w5jpGca7TP2yCNfsAdec/Gw+tZ/6B4T/pa6aEc7zdP5rUdvZwntg/KvRvpkdg4T/i+VkNscfgP0/gqiDoc+E/JCg+Z2q54D/MlSBs8lLgP9kKadna6+E/lMy+Aozk4z/ZdUVR1xXlP2xn7n0Y2+c/QW51Rirm4j9ezRLjU6bdP9qnC3odFeo/SgunRp5x6D+2j7IdyUHpP4UJp68ZWN8/Wm/28hcG4j+SgAiZwq7pP2stuxbPN8w/9jvl3Z6Q4T8NfgT3EdznP5o9UzZsE+M/ZH5HFWwj4z89eywo81PgP7OVxITHsOM/WLoOmJCW3j8AAAAAAADwPwAAAAAAAPA/8Ht5A9y9yj9LIRMa0PPbP2nUvicbWt8/Upl2DtYs4T+Yo61Sv7nOPyJLLljAhsc/1maC+uc22D/M2+CeV1LkP8nhpTAD/Nw/GUe29o9I2z/ojOJcxyjmPyn7lAn+FdE/1dJj5YY5zj+8/d2b9UTJPyjBNYnb+Mo/mGDRF4qrxz8mMSMEz0nQP/tguacRltA/TRR1XVHU1T9N6i1NSijcP7ivgzErjd4/YT+qvi8Y3T8+DEzlnXDeP68XILNwP90/DMqsPcYh4T98IxVzqzPaP7krlrWqFN0/DMxE9CkG3j+lNuo7G/XdP2aj+zoqSuU/PiGuwWEg6T9nox2frcfeP8KRf4wVj9o/Arb4jRqN4T+qjmFVRPncP05mCeFHIt4/GrVxvdza1T/5BbWcyFXTP0lSrQdivNY/6Sti9CY23D/lubvcGf7aP7VXStQD29s/CMn6gZpA2T9nr14Ovm3dPw7cpMz6p+Q/AAAAAAAA8D8=","dtype":"float64","order":"little","shape":[109]},"top":{"__ndarray__":"+pndBev84D8j6jSlqnXhP+NHtmYKsNY/06L4s7e04D+t5ApicgXhP0yo0PggSeE/OG306U8e6j98mwK/sl/jPybU2hV+EuI/pTRROgzy6D8PI6IR84DiPwzqzoXs5OE/GpdUK5BR6D/cVin8zqHkP82EWZMn2dk/A32lsRtV5j9zJUehkRLlP+YD9xHcR9A/c9ykBLhb4j/aTHsP3O7gP2lIPsJQW9c/rDhP1V2D4T/9kw7kyuXcPzgDcdUnudk/HzfAOXW44j9NLnEwKZzgPxWINUTC3tw/B3tH+Xh+yz8zuQiKq2vVPwOhIf+IUOk/g08jLPe05z8w5jpGca7TP2yCNfsAdec/Gw+tZ/6B4T/pa6aEc7zdP5rUdvZwntg/KvRvpkdg4T/i+VkNscfgP0/gqiDoc+E/JCg+Z2q54D/MlSBs8lLgP9kKadna6+E/lMy+Aozk4z/ZdUVR1xXlP2xn7n0Y2+c/QW51Rirm4j9ezRLjU6bdP9qnC3odFeo/SgunRp5x6D+2j7IdyUHpP4UJp68ZWN8/Wm/28hcG4j+SgAiZwq7pPwAAAAAAAPA/AAAAAAAA8D8AAAAAAADwPwAAAAAAAPA/AAAAAAAA8D8AAAAAAADwPwAAAAAAAPA/////////7z8AAAAAAADwPwAAAAAAAPA/////////7z8AAAAAAADwPwAAAAAAAPA/AAAAAAAA8D8AAAAAAADwPwAAAAAAAPA/////////7z8AAAAAAADwPwAAAAAAAPA/AAAAAAAA8D8AAAAAAADwPwAAAAAAAPA/////////7z8AAAAAAADwPwAAAAAAAPA/AAAAAAAA8D/////////vPwAAAAAAAPA/AAAAAAAA8D8AAAAAAADwPwAAAAAAAPA/AAAAAAAA8D8AAAAAAADwPwEAAAAAAPA/AAAAAAAA8D/////////vPwAAAAAAAPA/AAAAAAAA8D8AAAAAAADwPwAAAAAAAPA/AAAAAAAA8D8AAAAAAADwPwAAAAAAAPA/AAAAAAAA8D8AAAAAAADwPwAAAAAAAPA/AAAAAAAA8D8AAAAAAADwPwAAAAAAAPA/AAAAAAAA8D8BAAAAAADwPwAAAAAAAPA/AAAAAAAA8D8AAAAAAADwPwAAAAAAAPA/AAAAAAAA8D8=","dtype":"float64","order":"little","shape":[109]}},"selected":{"id":"1225"},"selection_policy":{"id":"1238"}},"id":"1224","type":"ColumnDataSource"},{"attributes":{"below":[{"id":"1203"}],"center":[{"id":"1206"},{"id":"1209"},{"id":"1240"}],"left":[{"id":"1207"}],"margin":null,"min_border_bottom":10,"min_border_left":10,"min_border_right":10,"min_border_top":10,"plot_height":1140,"plot_width":800,"renderers":[{"id":"1230"}],"right":[{"id":"1240"}],"sizing_mode":"fixed","title":{"id":"1195"},"toolbar":{"id":"1216"},"x_range":{"id":"1191"},"x_scale":{"id":"1199"},"y_range":{"id":"1192"},"y_scale":{"id":"1201"}},"id":"1194","subtype":"Figure","type":"Plot"},{"attributes":{"axis_label":"Group","bounds":"auto","formatter":{"id":"1233"},"major_label_orientation":"horizontal","ticker":{"id":"1208"}},"id":"1207","type":"CategoricalAxis"},{"attributes":{"children":[{"id":"1190"},{"id":"1194"},{"id":"1262"}],"margin":[0,0,0,0],"name":"Row01743","tags":["embedded"]},"id":"1189","type":"Row"},{"attributes":{"end":1.0000000000000002,"reset_end":1.0000000000000002,"reset_start":0.0,"tags":[[["relabund","relabund",null]]]},"id":"1191","type":"Range1d"},{"attributes":{},"id":"1199","type":"LinearScale"},{"attributes":{"fill_alpha":{"value":0.1},"fill_color":{"field":"Class","transform":{"id":"1223"}},"height":{"value":0.8},"left":{"field":"bottom"},"line_alpha":{"value":0.1},"right":{"field":"top"},"y":{"field":"Group"}},"id":"1228","type":"HBar"},{"attributes":{"margin":[5,5,5,5],"name":"HSpacer01748","sizing_mode":"stretch_width"},"id":"1262","type":"Spacer"},{"attributes":{},"id":"1233","type":"CategoricalTickFormatter"},{"attributes":{"fill_alpha":{"value":0.2},"fill_color":{"field":"Class","transform":{"id":"1223"}},"height":{"value":0.8},"left":{"field":"bottom"},"line_alpha":{"value":0.2},"right":{"field":"top"},"y":{"field":"Group"}},"id":"1229","type":"HBar"},{"attributes":{"callback":null,"renderers":[{"id":"1230"}],"tags":["hv_created"],"tooltips":[["Group","@{Group}"],["Class","@{Class}"],["relabund","@{relabund}"],["count","@{count}"],["Kingdom","@{Kingdom}"],["Phylum","@{Phylum}"]]},"id":"1193","type":"HoverTool"},{"attributes":{},"id":"1204","type":"BasicTicker"},{"attributes":{"source":{"id":"1224"}},"id":"1231","type":"CDSView"},{"attributes":{"axis":{"id":"1207"},"dimension":1,"grid_line_color":null,"ticker":null},"id":"1209","type":"Grid"},{"attributes":{"overlay":{"id":"1215"}},"id":"1213","type":"BoxZoomTool"},{"attributes":{},"id":"1201","type":"CategoricalScale"},{"attributes":{"fill_color":{"field":"Class","transform":{"id":"1223"}},"height":{"value":0.8},"left":{"field":"bottom"},"right":{"field":"top"},"y":{"field":"Group"}},"id":"1227","type":"HBar"},{"attributes":{"factors":["Alphaproteobacteria","Gammaproteobacteria"],"palette":["#30a2da","#fc4f30"]},"id":"1223","type":"CategoricalColorMapper"},{"attributes":{"label":{"field":"Class"},"renderers":[{"id":"1230"}]},"id":"1241","type":"LegendItem"},{"attributes":{"axis_label":"relabund","bounds":"auto","formatter":{"id":"1235"},"major_label_orientation":"horizontal","ticker":{"id":"1204"}},"id":"1203","type":"LinearAxis"},{"attributes":{},"id":"1211","type":"PanTool"}],"root_ids":["1189"]},"title":"Bokeh Application","version":"2.1.1"}}
+        </script>
+        <script type="text/javascript">
+          (function() {
+            var fn = function() {
+              Bokeh.safely(function() {
+                (function(root) {
+                  function embed_document(root) {
+                    
+                  var docs_json = document.getElementById('1376').textContent;
+                  var render_items = [{"docid":"9debc7d5-3f3b-4c89-8a18-63d039aab620","root_ids":["1189"],"roots":{"1189":"2c483678-d507-420e-97ed-bde1226784dc"}}];
+                  root.Bokeh.embed.embed_items(docs_json, render_items);
+                
+                  }
+                  if (root.Bokeh !== undefined) {
+                    embed_document(root);
+                  } else {
+                    var attempts = 0;
+                    var timer = setInterval(function(root) {
+                      if (root.Bokeh !== undefined) {
+                        clearInterval(timer);
+                        embed_document(root);
+                      } else {
+                        attempts++;
+                        if (attempts > 100) {
+                          clearInterval(timer);
+                          console.log("Bokeh: ERROR: Unable to run BokehJS code because BokehJS library is missing");
+                        }
+                      }
+                    }, 10, root)
+                  }
+                })(window);
+              });
+            };
+            if (document.readyState != "loading") fn();
+            else document.addEventListener("DOMContentLoaded", fn);
+          })();
+        </script>
+    
+  </body>
+  
+</html>
