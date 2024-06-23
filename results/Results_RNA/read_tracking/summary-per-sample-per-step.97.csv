@@ -1,0 +1,65 @@
+sample,raw,qc,denoising,read-merging,clustering,taxa-filter,rare-otus-filter,subsampling,lulu
+RNA_reincubated_rainfed_rep4_R1,50000,48684,0,44384 (617 uniques),43011 (485 uniques),43005 (484 uniques),42999 (481 uniques),39534 (481 uniques),39534 (481 uniques)
+RNA_incubated_rainfed_rep4_R1,50000,48931,0,41241 (648 uniques),39392 (551 uniques),39388 (550 uniques),39382 (547 uniques),0,0
+RNA_incubated_rainfed_rep3_R1,50000,48769,0,41040 (654 uniques),39589 (545 uniques),39537 (542 uniques),39533 (540 uniques),0,0
+RNA_incubated_irrigated_rep2_R1,50000,48812,0,41321 (705 uniques),40141 (594 uniques),40137 (593 uniques),40135 (592 uniques),39534 (592 uniques),39534 (590 uniques)
+RNA_incubated_rainfed_rep1_R1,50000,48964,0,41502 (578 uniques),38887 (449 uniques),38874 (448 uniques),38872 (447 uniques),0,0
+RNA_incubated_irrigated_rep3_R1,50000,48982,0,41633 (806 uniques),40883 (666 uniques),40831 (664 uniques),40827 (662 uniques),39534 (662 uniques),39534 (661 uniques)
+RNA_reincubated_irrigated_rep1_R1,50000,48306,0,43468 (674 uniques),42676 (529 uniques),42676 (529 uniques),42676 (529 uniques),39534 (529 uniques),39534 (528 uniques)
+RNA_dreid_irrigated_rep1_R1,50000,48229,0,43428 (690 uniques),42591 (568 uniques),42591 (568 uniques),42581 (563 uniques),39534 (563 uniques),39534 (563 uniques)
+RNA_fresh_rainfed_rep1_R1,50000,48785,0,42442 (791 uniques),40665 (629 uniques),40612 (624 uniques),40602 (619 uniques),39534 (619 uniques),39534 (619 uniques)
+RNA_fresh_irrigated_rep3_R1,50000,48737,0,40182 (677 uniques),39649 (581 uniques),39631 (579 uniques),39627 (577 uniques),39534 (577 uniques),39534 (577 uniques)
+RNA_dried_rainfed_rep4_R1,50000,48502,0,43574 (589 uniques),41193 (471 uniques),41193 (471 uniques),41189 (469 uniques),39534 (469 uniques),39534 (469 uniques)
+RNA_incubated_irrigated_rep1_R1,50000,48923,0,41196 (729 uniques),40365 (627 uniques),40360 (626 uniques),40358 (625 uniques),39534 (625 uniques),39534 (625 uniques)
+RNA_reincubated_rainfed_rep3_R1,50000,48379,0,43971 (591 uniques),40813 (454 uniques),40750 (451 uniques),40746 (449 uniques),39534 (449 uniques),39534 (449 uniques)
+RNA_incubated_rainfed_rep2_R1,50000,48802,0,41054 (670 uniques),40359 (559 uniques),40359 (559 uniques),40351 (555 uniques),39534 (555 uniques),39534 (555 uniques)
+RNA_fresh_irrigated_rep2_R1,50000,48921,0,40125 (595 uniques),39675 (512 uniques),39548 (509 uniques),39548 (509 uniques),39534 (509 uniques),39534 (509 uniques)
+RNA_reincubated_rainfed_rep1_R1,50000,48129,0,44067 (619 uniques),41206 (459 uniques),41108 (458 uniques),41102 (455 uniques),39534 (455 uniques),39534 (455 uniques)
+RNA_dreid_irrigated_rep2_R1,50000,48368,0,43627 (639 uniques),19416 (236 uniques),19416 (236 uniques),19412 (234 uniques),0,0
+RNA_fresh_rainfed_rep4_R1,50000,48964,0,40952 (657 uniques),40450 (572 uniques),40407 (571 uniques),40405 (570 uniques),39534 (570 uniques),39534 (570 uniques)
+RNA_fresh_irrigated_rep1_R1,50000,48914,0,40311 (693 uniques),39845 (601 uniques),39838 (600 uniques),39836 (599 uniques),39534 (599 uniques),39534 (599 uniques)
+RNA_fresh_rainfed_rep2_R1,50000,49014,0,41120 (685 uniques),40580 (575 uniques),40563 (574 uniques),40559 (572 uniques),39534 (572 uniques),39534 (572 uniques)
+RNA_dreid_irrigated_rep4_R1,50000,48416,0,44050 (687 uniques),41895 (538 uniques),41895 (538 uniques),41885 (533 uniques),39534 (533 uniques),39534 (533 uniques)
+RNA_reincubated_irrigated_rep4_R1,50000,48429,0,44320 (523 uniques),42698 (378 uniques),42696 (377 uniques),42696 (377 uniques),39534 (377 uniques),39534 (376 uniques)
+RNA_fresh_rainfed_rep3_R1,50000,48865,0,41014 (612 uniques),40131 (518 uniques),40110 (517 uniques),40108 (516 uniques),39534 (516 uniques),39534 (516 uniques)
+RNA_dried_rainfed_rep3_R1,50000,48402,0,43483 (644 uniques),40838 (515 uniques),40832 (514 uniques),40828 (512 uniques),39534 (512 uniques),39534 (512 uniques)
+RNA_reincubated_rainfed_rep2_R1,50000,48702,0,43879 (610 uniques),42257 (468 uniques),42257 (468 uniques),42253 (466 uniques),39534 (466 uniques),39534 (466 uniques)
+RNA_reincubated_irrigated_rep2_R1,50000,48535,0,44298 (570 uniques),42096 (427 uniques),42096 (427 uniques),42088 (423 uniques),39534 (423 uniques),39534 (423 uniques)
+RNA_dreid_irrigated_rep3_R1,50000,48611,0,43834 (659 uniques),42054 (510 uniques),42054 (510 uniques),42044 (505 uniques),39534 (505 uniques),39534 (505 uniques)
+RNA_dried_rainfed_rep2_R1,50000,48362,0,43267 (549 uniques),41607 (418 uniques),41607 (418 uniques),41597 (413 uniques),39534 (413 uniques),39534 (413 uniques)
+RNA_reincubated_irrigated_rep3_R1,50000,48150,0,44088 (532 uniques),42643 (392 uniques),42635 (391 uniques),42635 (391 uniques),39534 (391 uniques),39534 (391 uniques)
+RNA_fresh_irrigated_rep4_R1,50000,48926,0,41475 (679 uniques),41072 (578 uniques),41057 (577 uniques),41051 (574 uniques),39534 (574 uniques),39534 (574 uniques)
+RNA_incubated_irrigated_rep4_R1,50000,48965,0,42289 (697 uniques),41484 (575 uniques),41481 (574 uniques),41477 (572 uniques),39534 (572 uniques),39534 (572 uniques)
+RNA_dried_rainfed_rep1_R1,50000,48472,0,43925 (596 uniques),41434 (451 uniques),41406 (449 uniques),41402 (447 uniques),39534 (447 uniques),39534 (447 uniques)
+RNA_incubated_rainfed_rep2_R1_R1,0,0,41054 (670 uniques),0,0,0,0,0,0
+RNA_reincubated_irrigated_rep1_R1_R1,0,0,43468 (674 uniques),0,0,0,0,0,0
+RNA_fresh_irrigated_rep2_R1_R1,0,0,40125 (595 uniques),0,0,0,0,0,0
+RNA_dreid_irrigated_rep1_R1_R1,0,0,43428 (690 uniques),0,0,0,0,0,0
+RNA_incubated_irrigated_rep2_R1_R1,0,0,41321 (705 uniques),0,0,0,0,0,0
+RNA_reincubated_rainfed_rep1_R1_R1,0,0,44067 (619 uniques),0,0,0,0,0,0
+RNA_dried_rainfed_rep2_R1_R1,0,0,43267 (549 uniques),0,0,0,0,0,0
+RNA_reincubated_irrigated_rep2_R1_R1,0,0,44298 (570 uniques),0,0,0,0,0,0
+RNA_fresh_irrigated_rep1_R1_R1,0,0,40311 (693 uniques),0,0,0,0,0,0
+RNA_fresh_rainfed_rep1_R1_R1,0,0,42442 (791 uniques),0,0,0,0,0,0
+RNA_dreid_irrigated_rep3_R1_R1,0,0,43834 (659 uniques),0,0,0,0,0,0
+RNA_dried_rainfed_rep3_R1_R1,0,0,43483 (644 uniques),0,0,0,0,0,0
+RNA_incubated_rainfed_rep3_R1_R1,0,0,41040 (654 uniques),0,0,0,0,0,0
+RNA_incubated_rainfed_rep1_R1_R1,0,0,41502 (578 uniques),0,0,0,0,0,0
+RNA_reincubated_rainfed_rep2_R1_R1,0,0,43879 (610 uniques),0,0,0,0,0,0
+RNA_fresh_rainfed_rep2_R1_R1,0,0,41120 (685 uniques),0,0,0,0,0,0
+RNA_reincubated_rainfed_rep4_R1_R1,0,0,44384 (617 uniques),0,0,0,0,0,0
+RNA_incubated_irrigated_rep1_R1_R1,0,0,41196 (729 uniques),0,0,0,0,0,0
+RNA_reincubated_irrigated_rep4_R1_R1,0,0,44320 (523 uniques),0,0,0,0,0,0
+RNA_fresh_irrigated_rep3_R1_R1,0,0,40182 (677 uniques),0,0,0,0,0,0
+RNA_incubated_irrigated_rep4_R1_R1,0,0,42289 (697 uniques),0,0,0,0,0,0
+RNA_reincubated_irrigated_rep3_R1_R1,0,0,44088 (532 uniques),0,0,0,0,0,0
+RNA_reincubated_rainfed_rep3_R1_R1,0,0,43971 (591 uniques),0,0,0,0,0,0
+RNA_fresh_rainfed_rep3_R1_R1,0,0,41014 (612 uniques),0,0,0,0,0,0
+RNA_fresh_irrigated_rep4_R1_R1,0,0,41475 (679 uniques),0,0,0,0,0,0
+RNA_incubated_rainfed_rep4_R1_R1,0,0,41241 (648 uniques),0,0,0,0,0,0
+RNA_fresh_rainfed_rep4_R1_R1,0,0,40952 (657 uniques),0,0,0,0,0,0
+RNA_incubated_irrigated_rep3_R1_R1,0,0,41633 (806 uniques),0,0,0,0,0,0
+RNA_dried_rainfed_rep4_R1_R1,0,0,43574 (589 uniques),0,0,0,0,0,0
+RNA_dreid_irrigated_rep2_R1_R1,0,0,43627 (639 uniques),0,0,0,0,0,0
+RNA_dreid_irrigated_rep4_R1_R1,0,0,44050 (687 uniques),0,0,0,0,0,0
+RNA_dried_rainfed_rep1_R1_R1,0,0,43925 (596 uniques),0,0,0,0,0,0

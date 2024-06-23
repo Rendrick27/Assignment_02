@@ -1,0 +1,554 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+  
+  <head>
+    
+      <meta charset="utf-8">
+      <title>barplot-Phylum_97</title>
+      
+      
+        
+          
+        <style>
+            table.panel-df {
+                    margin-left: auto;
+                    margin-right: auto;
+                    border: none;
+                    border-collapse: collapse;
+                    border-spacing: 0;
+                    color: black;
+                    font-size: 12px;
+                    table-layout: fixed;
+                    width: 100%;
+                }
+
+                .panel-df tr, .panel-df th, .panel-df td {
+                    text-align: right;
+                    vertical-align: middle;
+                    padding: 0.5em 0.5em !important;
+                    line-height: normal;
+                    white-space: normal;
+                    max-width: none;
+                    border: none;
+                }
+
+                .panel-df tbody {
+                    display: table-row-group;
+                    vertical-align: middle;
+                    border-color: inherit;
+                }
+
+                .panel-df tbody tr:nth-child(odd) {
+                    background: #f5f5f5;
+                }
+
+                .panel-df thead {
+                    border-bottom: 1px solid black;
+                    vertical-align: bottom;
+                }
+
+                .panel-df tr:hover {
+                    background: lightblue !important;
+                    cursor: pointer;
+                }
+
+        </style>
+        <style>
+            .json-formatter-row {
+                  font-family: monospace;
+                }
+                .json-formatter-row,
+                .json-formatter-row a,
+                .json-formatter-row a:hover {
+                  color: black;
+                  text-decoration: none;
+                }
+                .json-formatter-row .json-formatter-row {
+                  margin-left: 1rem;
+                }
+                .json-formatter-row .json-formatter-children.json-formatter-empty {
+                  opacity: 0.5;
+                  margin-left: 1rem;
+                }
+                .json-formatter-row .json-formatter-children.json-formatter-empty:after {
+                  display: none;
+                }
+                .json-formatter-row .json-formatter-children.json-formatter-empty.json-formatter-object:after {
+                  content: "No properties";
+                }
+                .json-formatter-row .json-formatter-children.json-formatter-empty.json-formatter-array:after {
+                  content: "[]";
+                }
+                .json-formatter-row .json-formatter-string,
+                .json-formatter-row .json-formatter-stringifiable {
+                  color: green;
+                  white-space: pre;
+                  word-wrap: break-word;
+                }
+                .json-formatter-row .json-formatter-number {
+                  color: blue;
+                }
+                .json-formatter-row .json-formatter-boolean {
+                  color: red;
+                }
+                .json-formatter-row .json-formatter-null {
+                  color: #855A00;
+                }
+                .json-formatter-row .json-formatter-undefined {
+                  color: #ca0b69;
+                }
+                .json-formatter-row .json-formatter-function {
+                  color: #FF20ED;
+                }
+                .json-formatter-row .json-formatter-date {
+                  background-color: rgba(0, 0, 0, 0.05);
+                }
+                .json-formatter-row .json-formatter-url {
+                  text-decoration: underline;
+                  color: blue;
+                  cursor: pointer;
+                }
+                .json-formatter-row .json-formatter-bracket {
+                  color: blue;
+                }
+                .json-formatter-row .json-formatter-key {
+                  color: #00008B;
+                  padding-right: 0.2rem;
+                }
+                .json-formatter-row .json-formatter-toggler-link {
+                  cursor: pointer;
+                }
+                .json-formatter-row .json-formatter-toggler {
+                  line-height: 1.2rem;
+                  font-size: 0.7rem;
+                  vertical-align: middle;
+                  opacity: 0.6;
+                  cursor: pointer;
+                  padding-right: 0.2rem;
+                }
+                .json-formatter-row .json-formatter-toggler:after {
+                  display: inline-block;
+                  transition: transform 100ms ease-in;
+                  content: "\25BA";
+                }
+                .json-formatter-row > a > .json-formatter-preview-text {
+                  opacity: 0;
+                  transition: opacity 0.15s ease-in;
+                  font-style: italic;
+                }
+                .json-formatter-row:hover > a > .json-formatter-preview-text {
+                  opacity: 0.6;
+                }
+                .json-formatter-row.json-formatter-open > .json-formatter-toggler-link .json-formatter-toggler:after {
+                  transform: rotate(90deg);
+                }
+                .json-formatter-row.json-formatter-open > .json-formatter-children:after {
+                  display: inline-block;
+                }
+                .json-formatter-row.json-formatter-open > a > .json-formatter-preview-text {
+                  display: none;
+                }
+                .json-formatter-row.json-formatter-open.json-formatter-empty:after {
+                  display: block;
+                }
+                .json-formatter-dark.json-formatter-row {
+                  font-family: monospace;
+                }
+                .json-formatter-dark.json-formatter-row,
+                .json-formatter-dark.json-formatter-row a,
+                .json-formatter-dark.json-formatter-row a:hover {
+                  color: white;
+                  text-decoration: none;
+                }
+                .json-formatter-dark.json-formatter-row .json-formatter-row {
+                  margin-left: 1rem;
+                }
+                .json-formatter-dark.json-formatter-row .json-formatter-children.json-formatter-empty {
+                  opacity: 0.5;
+                  margin-left: 1rem;
+                }
+                .json-formatter-dark.json-formatter-row .json-formatter-children.json-formatter-empty:after {
+                  display: none;
+                }
+                .json-formatter-dark.json-formatter-row .json-formatter-children.json-formatter-empty.json-formatter-object:after {
+                  content: "No properties";
+                }
+                .json-formatter-dark.json-formatter-row .json-formatter-children.json-formatter-empty.json-formatter-array:after {
+                  content: "[]";
+                }
+                .json-formatter-dark.json-formatter-row .json-formatter-string,
+                .json-formatter-dark.json-formatter-row .json-formatter-stringifiable {
+                  color: #31F031;
+                  white-space: pre;
+                  word-wrap: break-word;
+                }
+                .json-formatter-dark.json-formatter-row .json-formatter-number {
+                  color: #66C2FF;
+                }
+                .json-formatter-dark.json-formatter-row .json-formatter-boolean {
+                  color: #EC4242;
+                }
+                .json-formatter-dark.json-formatter-row .json-formatter-null {
+                  color: #EEC97D;
+                }
+                .json-formatter-dark.json-formatter-row .json-formatter-undefined {
+                  color: #ef8fbe;
+                }
+                .json-formatter-dark.json-formatter-row .json-formatter-function {
+                  color: #FD48CB;
+                }
+                .json-formatter-dark.json-formatter-row .json-formatter-date {
+                  background-color: rgba(255, 255, 255, 0.05);
+                }
+                .json-formatter-dark.json-formatter-row .json-formatter-url {
+                  text-decoration: underline;
+                  color: #027BFF;
+                  cursor: pointer;
+                }
+                .json-formatter-dark.json-formatter-row .json-formatter-bracket {
+                  color: #9494FF;
+                }
+                .json-formatter-dark.json-formatter-row .json-formatter-key {
+                  color: #23A0DB;
+                  padding-right: 0.2rem;
+                }
+                .json-formatter-dark.json-formatter-row .json-formatter-toggler-link {
+                  cursor: pointer;
+                }
+                .json-formatter-dark.json-formatter-row .json-formatter-toggler {
+                  line-height: 1.2rem;
+                  font-size: 0.7rem;
+                  vertical-align: middle;
+                  opacity: 0.6;
+                  cursor: pointer;
+                  padding-right: 0.2rem;
+                }
+                .json-formatter-dark.json-formatter-row .json-formatter-toggler:after {
+                  display: inline-block;
+                  transition: transform 100ms ease-in;
+                  content: "\25BA";
+                }
+                .json-formatter-dark.json-formatter-row > a > .json-formatter-preview-text {
+                  opacity: 0;
+                  transition: opacity 0.15s ease-in;
+                  font-style: italic;
+                }
+                .json-formatter-dark.json-formatter-row:hover > a > .json-formatter-preview-text {
+                  opacity: 0.6;
+                }
+                .json-formatter-dark.json-formatter-row.json-formatter-open > .json-formatter-toggler-link .json-formatter-toggler:after {
+                  transform: rotate(90deg);
+                }
+                .json-formatter-dark.json-formatter-row.json-formatter-open > .json-formatter-children:after {
+                  display: inline-block;
+                }
+                .json-formatter-dark.json-formatter-row.json-formatter-open > a > .json-formatter-preview-text {
+                  display: none;
+                }
+                .json-formatter-dark.json-formatter-row.json-formatter-open.json-formatter-empty:after {
+                  display: block;
+                }
+
+        </style>
+        <style>
+            .codehilite .hll { background-color: #ffffcc }
+                .codehilite  { background: #f8f8f8; }
+                .codehilite .c { color: #408080; font-style: italic } /* Comment */
+                .codehilite .err { border: 1px solid #FF0000 } /* Error */
+                .codehilite .k { color: #008000; font-weight: bold } /* Keyword */
+                .codehilite .o { color: #666666 } /* Operator */
+                .codehilite .ch { color: #408080; font-style: italic } /* Comment.Hashbang */
+                .codehilite .cm { color: #408080; font-style: italic } /* Comment.Multiline */
+                .codehilite .cp { color: #BC7A00 } /* Comment.Preproc */
+                .codehilite .cpf { color: #408080; font-style: italic } /* Comment.PreprocFile */
+                .codehilite .c1 { color: #408080; font-style: italic } /* Comment.Single */
+                .codehilite .cs { color: #408080; font-style: italic } /* Comment.Special */
+                .codehilite .gd { color: #A00000 } /* Generic.Deleted */
+                .codehilite .ge { font-style: italic } /* Generic.Emph */
+                .codehilite .gr { color: #FF0000 } /* Generic.Error */
+                .codehilite .gh { color: #000080; font-weight: bold } /* Generic.Heading */
+                .codehilite .gi { color: #00A000 } /* Generic.Inserted */
+                .codehilite .go { color: #888888 } /* Generic.Output */
+                .codehilite .gp { color: #000080; font-weight: bold } /* Generic.Prompt */
+                .codehilite .gs { font-weight: bold } /* Generic.Strong */
+                .codehilite .gu { color: #800080; font-weight: bold } /* Generic.Subheading */
+                .codehilite .gt { color: #0044DD } /* Generic.Traceback */
+                .codehilite .kc { color: #008000; font-weight: bold } /* Keyword.Constant */
+                .codehilite .kd { color: #008000; font-weight: bold } /* Keyword.Declaration */
+                .codehilite .kn { color: #008000; font-weight: bold } /* Keyword.Namespace */
+                .codehilite .kp { color: #008000 } /* Keyword.Pseudo */
+                .codehilite .kr { color: #008000; font-weight: bold } /* Keyword.Reserved */
+                .codehilite .kt { color: #B00040 } /* Keyword.Type */
+                .codehilite .m { color: #666666 } /* Literal.Number */
+                .codehilite .s { color: #BA2121 } /* Literal.String */
+                .codehilite .na { color: #7D9029 } /* Name.Attribute */
+                .codehilite .nb { color: #008000 } /* Name.Builtin */
+                .codehilite .nc { color: #0000FF; font-weight: bold } /* Name.Class */
+                .codehilite .no { color: #880000 } /* Name.Constant */
+                .codehilite .nd { color: #AA22FF } /* Name.Decorator */
+                .codehilite .ni { color: #999999; font-weight: bold } /* Name.Entity */
+                .codehilite .ne { color: #D2413A; font-weight: bold } /* Name.Exception */
+                .codehilite .nf { color: #0000FF } /* Name.Function */
+                .codehilite .nl { color: #A0A000 } /* Name.Label */
+                .codehilite .nn { color: #0000FF; font-weight: bold } /* Name.Namespace */
+                .codehilite .nt { color: #008000; font-weight: bold } /* Name.Tag */
+                .codehilite .nv { color: #19177C } /* Name.Variable */
+                .codehilite .ow { color: #AA22FF; font-weight: bold } /* Operator.Word */
+                .codehilite .w { color: #bbbbbb } /* Text.Whitespace */
+                .codehilite .mb { color: #666666 } /* Literal.Number.Bin */
+                .codehilite .mf { color: #666666 } /* Literal.Number.Float */
+                .codehilite .mh { color: #666666 } /* Literal.Number.Hex */
+                .codehilite .mi { color: #666666 } /* Literal.Number.Integer */
+                .codehilite .mo { color: #666666 } /* Literal.Number.Oct */
+                .codehilite .sa { color: #BA2121 } /* Literal.String.Affix */
+                .codehilite .sb { color: #BA2121 } /* Literal.String.Backtick */
+                .codehilite .sc { color: #BA2121 } /* Literal.String.Char */
+                .codehilite .dl { color: #BA2121 } /* Literal.String.Delimiter */
+                .codehilite .sd { color: #BA2121; font-style: italic } /* Literal.String.Doc */
+                .codehilite .s2 { color: #BA2121 } /* Literal.String.Double */
+                .codehilite .se { color: #BB6622; font-weight: bold } /* Literal.String.Escape */
+                .codehilite .sh { color: #BA2121 } /* Literal.String.Heredoc */
+                .codehilite .si { color: #BB6688; font-weight: bold } /* Literal.String.Interpol */
+                .codehilite .sx { color: #008000 } /* Literal.String.Other */
+                .codehilite .sr { color: #BB6688 } /* Literal.String.Regex */
+                .codehilite .s1 { color: #BA2121 } /* Literal.String.Single */
+                .codehilite .ss { color: #19177C } /* Literal.String.Symbol */
+                .codehilite .bp { color: #008000 } /* Name.Builtin.Pseudo */
+                .codehilite .fm { color: #0000FF } /* Name.Function.Magic */
+                .codehilite .vc { color: #19177C } /* Name.Variable.Class */
+                .codehilite .vg { color: #19177C } /* Name.Variable.Global */
+                .codehilite .vi { color: #19177C } /* Name.Variable.Instance */
+                .codehilite .vm { color: #19177C } /* Name.Variable.Magic */
+                .codehilite .il { color: #666666 } /* Literal.Number.Integer.Long */
+
+                .markdown h1 { margin-block-start: 0.34em }
+                .markdown h2 { margin-block-start: 0.42em }
+                .markdown h3 { margin-block-start: 0.5em }
+                .markdown h4 { margin-block-start: 0.67em }
+                .markdown h5 { margin-block-start: 0.84em }
+                .markdown h6 { margin-block-start: 1.17em }
+                .markdown ul { padding-inline-start: 2em }
+                .markdown ol { padding-inline-start: 2em }
+                .markdown strong { font-weight: 600 }
+                .markdown a { color: -webkit-link }
+                .markdown a { color: -moz-hyperlinkText }
+
+        </style>
+        <style>
+            .panel-widget-box {
+                	min-height: 20px;
+                	background-color: #f5f5f5;
+                	border: 1px solid #e3e3e3 !important;
+                	border-radius: 4px;
+                	-webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.05);
+                	box-shadow: inset 0 1px 1px rgba(0,0,0,.05);
+                	overflow-x: hidden;
+                	overflow-y: hidden;
+                }
+
+                .scrollable {
+                  overflow: scroll;
+                }
+
+                progress {
+                	appearance: none;
+                	-moz-appearance: none;
+                	-webkit-appearance: none;
+
+                	border: none;
+                	height: 20px;
+                	background-color: whiteSmoke;
+                	border-radius: 3px;
+                	box-shadow: 0 2px 3px rgba(0,0,0,.5) inset;
+                	color: royalblue;
+                	position: relative;
+                	margin: 0 0 1.5em;
+                }
+
+                progress[value]::-webkit-progress-bar {
+                	background-color: whiteSmoke;
+                	border-radius: 3px;
+                	box-shadow: 0 2px 3px rgba(0,0,0,.5) inset;
+                }
+
+                progress[value]::-webkit-progress-value {
+                	position: relative;
+
+                	background-size: 35px 20px, 100% 100%, 100% 100%;
+                	border-radius:3px;
+                }
+
+                progress.active:not([value])::before {
+                	background-position: 10%;
+                	animation-name: stripes;
+                	animation-duration: 3s;
+                	animation-timing-function: linear;
+                	animation-iteration-count: infinite;
+                }
+
+                progress[value]::-moz-progress-bar {
+                	background-size: 35px 20px, 100% 100%, 100% 100%;
+                	border-radius:3px;
+                }
+
+                progress:not([value])::-moz-progress-bar {
+                	border-radius:3px;
+                	background:
+                	linear-gradient(-45deg, transparent 33%, rgba(0, 0, 0, 0.2) 33%, rgba(0, 0, 0, 0.2) 66%, transparent 66%) left/2.5em 1.5em;
+
+                }
+
+                progress.active:not([value])::-moz-progress-bar {
+                	background-position: 10%;
+                	animation-name: stripes;
+                	animation-duration: 3s;
+                	animation-timing-function: linear;
+                	animation-iteration-count: infinite;
+                }
+
+                progress.active:not([value])::-webkit-progress-bar {
+                	background-position: 10%;
+                	animation-name: stripes;
+                	animation-duration: 3s;
+                	animation-timing-function: linear;
+                	animation-iteration-count: infinite;
+                }
+
+                progress.primary[value]::-webkit-progress-value { background-color: #007bff; }
+                progress.primary:not([value])::before { background-color: #007bff; }
+                progress.primary:not([value])::-webkit-progress-bar { background-color: #007bff; }
+                progress.primary::-moz-progress-bar { background-color: #007bff; }
+
+                progress.secondary[value]::-webkit-progress-value { background-color: #6c757d; }
+                progress.secondary:not([value])::before { background-color: #6c757d; }
+                progress.secondary:not([value])::-webkit-progress-bar { background-color: #6c757d; }
+                progress.secondary::-moz-progress-bar { background-color: #6c757d; }
+
+                progress.success[value]::-webkit-progress-value { background-color: #28a745; }
+                progress.success:not([value])::before { background-color: #28a745; }
+                progress.success:not([value])::-webkit-progress-bar { background-color: #28a745; }
+                progress.success::-moz-progress-bar { background-color: #28a745; }
+
+                progress.danger[value]::-webkit-progress-value { background-color: #dc3545; }
+                progress.danger:not([value])::before { background-color: #dc3545; }
+                progress.danger:not([value])::-webkit-progress-bar { background-color: #dc3545; }
+                progress.danger::-moz-progress-bar { background-color: #dc3545; }
+
+                progress.warning[value]::-webkit-progress-value { background-color: #ffc107; }
+                progress.warning:not([value])::before { background-color: #ffc107; }
+                progress.warning:not([value])::-webkit-progress-bar { background-color: #ffc107; }
+                progress.warning::-moz-progress-bar { background-color: #ffc107; }
+
+                progress.info[value]::-webkit-progress-value { background-color: #17a2b8; }
+                progress.info:not([value])::before { background-color: #17a2b8; }
+                progress.info:not([value])::-webkit-progress-bar { background-color: #17a2b8; }
+                progress.info::-moz-progress-bar { background-color: #17a2b8; }
+
+                progress.light[value]::-webkit-progress-value { background-color: #f8f9fa; }
+                progress.light:not([value])::before { background-color: #f8f9fa; }
+                progress.light:not([value])::-webkit-progress-bar { background-color: #f8f9fa; }
+                progress.light::-moz-progress-bar { background-color: #f8f9fa; }
+
+                progress.dark[value]::-webkit-progress-value { background-color: #343a40; }
+                progress.dark:not([value])::-webkit-progress-bar { background-color: #343a40; }
+                progress.dark:not([value])::before { background-color: #343a40; }
+                progress.dark::-moz-progress-bar { background-color: #343a40; }
+
+                progress:not([value])::-webkit-progress-bar {
+                	border-radius: 3px;
+                	background:
+                	linear-gradient(-45deg, transparent 33%, rgba(0, 0, 0, 0.2) 33%, rgba(0, 0, 0, 0.2) 66%, transparent 66%) left/2.5em 1.5em;
+                }
+                progress:not([value])::before {
+                	content:" ";
+                	position:absolute;
+                	height: 20px;
+                	top:0;
+                	left:0;
+                	right:0;
+                	bottom:0;
+                	border-radius: 3px;
+                	background:
+                	linear-gradient(-45deg, transparent 33%, rgba(0, 0, 0, 0.2) 33%, rgba(0, 0, 0, 0.2) 66%, transparent 66%) left/2.5em 1.5em;
+                }
+
+                @keyframes stripes {
+                  from {background-position: 0%}
+                  to {background-position: 100%}
+                }
+
+        </style>
+        
+        
+          
+        <script type="text/javascript" src="https://cdn.bokeh.org/bokeh/release/bokeh-2.1.1.min.js" integrity="sha384-kLr4fYcqcSpbuI95brIH3vnnYCquzzSxHPU6XGQCIkQRGJwhg0StNbj1eegrHs12" crossorigin="anonymous"></script>
+        <script type="text/javascript">
+            Bokeh.set_log_level("info");
+        </script>
+        
+      
+      
+    
+  </head>
+  
+  
+  <body>
+    
+      
+        
+          
+          
+            
+              <div class="bk-root" id="a9eead51-0395-4cf2-b297-74d52e7d1487" data-root-id="1001"></div>
+            
+          
+        
+      
+      
+        <script type="application/json" id="1188">
+          {"2ea69ca9-14cf-47a0-8622-6b6199f16355":{"roots":{"references":[{"attributes":{"data":{"Group":["RNA_fresh_rainfed_rep4_R1","RNA_reincubated_rainfed_rep1_R1","RNA_reincubated_irrigated_rep1_R1","RNA_incubated_irrigated_rep1_R1","RNA_dreid_irrigated_rep4_R1","RNA_reincubated_irrigated_rep4_R1","RNA_incubated_irrigated_rep3_R1","RNA_dreid_irrigated_rep3_R1","RNA_fresh_rainfed_rep3_R1","RNA_fresh_irrigated_rep1_R1","RNA_reincubated_rainfed_rep2_R1","RNA_dried_rainfed_rep3_R1","RNA_incubated_irrigated_rep2_R1","RNA_reincubated_irrigated_rep3_R1","RNA_incubated_irrigated_rep4_R1","RNA_reincubated_rainfed_rep3_R1","RNA_fresh_rainfed_rep2_R1","RNA_fresh_rainfed_rep1_R1","RNA_fresh_irrigated_rep3_R1","RNA_dried_rainfed_rep1_R1","RNA_reincubated_rainfed_rep4_R1","RNA_dried_rainfed_rep2_R1","RNA_reincubated_irrigated_rep2_R1","RNA_dreid_irrigated_rep1_R1","RNA_fresh_irrigated_rep4_R1","RNA_incubated_rainfed_rep2_R1","RNA_fresh_irrigated_rep2_R1","RNA_dried_rainfed_rep4_R1","RNA_dried_rainfed_rep3_R1","RNA_reincubated_irrigated_rep2_R1","RNA_incubated_irrigated_rep4_R1","RNA_incubated_irrigated_rep3_R1","RNA_dreid_irrigated_rep4_R1","RNA_incubated_rainfed_rep2_R1","RNA_reincubated_irrigated_rep3_R1","RNA_incubated_irrigated_rep2_R1","RNA_reincubated_irrigated_rep4_R1","RNA_dried_rainfed_rep1_R1","RNA_dried_rainfed_rep2_R1","RNA_reincubated_rainfed_rep1_R1","RNA_fresh_rainfed_rep2_R1","RNA_reincubated_rainfed_rep4_R1","RNA_fresh_irrigated_rep3_R1","RNA_fresh_irrigated_rep2_R1","RNA_fresh_irrigated_rep4_R1","RNA_dreid_irrigated_rep1_R1","RNA_reincubated_rainfed_rep3_R1","RNA_fresh_rainfed_rep1_R1","RNA_incubated_irrigated_rep1_R1","RNA_fresh_irrigated_rep1_R1","RNA_reincubated_irrigated_rep1_R1","RNA_fresh_rainfed_rep3_R1","RNA_dried_rainfed_rep4_R1","RNA_dreid_irrigated_rep3_R1","RNA_fresh_rainfed_rep4_R1","RNA_reincubated_rainfed_rep2_R1","RNA_fresh_rainfed_rep3_R1","RNA_incubated_irrigated_rep2_R1","RNA_reincubated_irrigated_rep1_R1","RNA_dried_rainfed_rep2_R1","RNA_fresh_irrigated_rep4_R1","RNA_incubated_irrigated_rep1_R1","RNA_fresh_rainfed_rep1_R1","RNA_fresh_irrigated_rep2_R1","RNA_incubated_rainfed_rep2_R1","RNA_fresh_rainfed_rep4_R1","RNA_fresh_rainfed_rep2_R1","RNA_fresh_irrigated_rep1_R1","RNA_incubated_irrigated_rep4_R1","RNA_dried_rainfed_rep3_R1","RNA_incubated_irrigated_rep3_R1","RNA_dried_rainfed_rep4_R1","RNA_fresh_irrigated_rep3_R1","RNA_dried_rainfed_rep1_R1","RNA_reincubated_rainfed_rep1_R1","RNA_reincubated_rainfed_rep4_R1","RNA_reincubated_irrigated_rep3_R1","RNA_dreid_irrigated_rep1_R1","RNA_reincubated_rainfed_rep2_R1","RNA_dreid_irrigated_rep4_R1","RNA_dreid_irrigated_rep3_R1","RNA_reincubated_irrigated_rep2_R1","RNA_reincubated_irrigated_rep4_R1","RNA_reincubated_rainfed_rep3_R1","RNA_reincubated_irrigated_rep4_R1","RNA_incubated_irrigated_rep2_R1","RNA_dreid_irrigated_rep3_R1","RNA_fresh_rainfed_rep1_R1","RNA_dreid_irrigated_rep4_R1","RNA_fresh_irrigated_rep2_R1","RNA_incubated_irrigated_rep3_R1","RNA_reincubated_rainfed_rep1_R1","RNA_reincubated_rainfed_rep3_R1","RNA_incubated_irrigated_rep1_R1","RNA_fresh_rainfed_rep2_R1","RNA_fresh_rainfed_rep4_R1","RNA_reincubated_rainfed_rep2_R1","RNA_fresh_irrigated_rep1_R1","RNA_dried_rainfed_rep4_R1","RNA_dried_rainfed_rep3_R1","RNA_fresh_rainfed_rep3_R1","RNA_dried_rainfed_rep1_R1","RNA_dried_rainfed_rep2_R1","RNA_incubated_irrigated_rep4_R1","RNA_reincubated_irrigated_rep2_R1","RNA_dreid_irrigated_rep1_R1","RNA_reincubated_rainfed_rep4_R1","RNA_reincubated_irrigated_rep3_R1","RNA_reincubated_irrigated_rep1_R1","RNA_fresh_irrigated_rep4_R1","RNA_incubated_rainfed_rep2_R1","RNA_fresh_irrigated_rep3_R1","RNA_dried_rainfed_rep1_R1","RNA_dried_rainfed_rep4_R1","RNA_dreid_irrigated_rep3_R1","RNA_incubated_rainfed_rep2_R1","RNA_fresh_irrigated_rep4_R1","RNA_fresh_irrigated_rep1_R1","RNA_reincubated_rainfed_rep1_R1","RNA_reincubated_rainfed_rep4_R1","RNA_fresh_rainfed_rep3_R1","RNA_fresh_rainfed_rep2_R1","RNA_reincubated_rainfed_rep2_R1","RNA_reincubated_irrigated_rep1_R1","RNA_fresh_rainfed_rep4_R1","RNA_fresh_irrigated_rep3_R1","RNA_fresh_rainfed_rep1_R1","RNA_dried_rainfed_rep2_R1","RNA_incubated_irrigated_rep3_R1","RNA_fresh_irrigated_rep2_R1","RNA_incubated_irrigated_rep1_R1","RNA_reincubated_irrigated_rep3_R1","RNA_dreid_irrigated_rep1_R1","RNA_reincubated_rainfed_rep3_R1","RNA_reincubated_irrigated_rep4_R1","RNA_dreid_irrigated_rep4_R1","RNA_incubated_irrigated_rep2_R1","RNA_reincubated_irrigated_rep2_R1","RNA_dried_rainfed_rep3_R1","RNA_incubated_irrigated_rep4_R1","RNA_fresh_irrigated_rep2_R1","RNA_reincubated_rainfed_rep4_R1","RNA_fresh_irrigated_rep4_R1","RNA_fresh_rainfed_rep2_R1","RNA_reincubated_rainfed_rep3_R1","RNA_dreid_irrigated_rep1_R1","RNA_fresh_irrigated_rep3_R1","RNA_fresh_rainfed_rep1_R1","RNA_incubated_irrigated_rep1_R1","RNA_fresh_rainfed_rep3_R1","RNA_reincubated_irrigated_rep4_R1","RNA_incubated_irrigated_rep3_R1","RNA_fresh_irrigated_rep1_R1","RNA_reincubated_irrigated_rep3_R1","RNA_dreid_irrigated_rep4_R1","RNA_incubated_irrigated_rep2_R1","RNA_incubated_rainfed_rep2_R1","RNA_dried_rainfed_rep3_R1","RNA_dried_rainfed_rep2_R1","RNA_dried_rainfed_rep4_R1","RNA_fresh_rainfed_rep4_R1","RNA_dried_rainfed_rep1_R1","RNA_reincubated_irrigated_rep2_R1","RNA_reincubated_rainfed_rep2_R1","RNA_dreid_irrigated_rep3_R1","RNA_reincubated_irrigated_rep1_R1","RNA_reincubated_rainfed_rep1_R1","RNA_incubated_irrigated_rep4_R1","RNA_fresh_irrigated_rep4_R1","RNA_reincubated_irrigated_rep3_R1","RNA_reincubated_irrigated_rep1_R1","RNA_incubated_rainfed_rep2_R1","RNA_fresh_rainfed_rep1_R1","RNA_incubated_irrigated_rep4_R1","RNA_reincubated_rainfed_rep4_R1","RNA_incubated_irrigated_rep3_R1","RNA_reincubated_rainfed_rep1_R1","RNA_incubated_irrigated_rep2_R1","RNA_fresh_rainfed_rep2_R1","RNA_incubated_irrigated_rep1_R1","RNA_reincubated_rainfed_rep2_R1","RNA_fresh_rainfed_rep4_R1","RNA_reincubated_rainfed_rep3_R1","RNA_fresh_rainfed_rep3_R1","RNA_reincubated_irrigated_rep4_R1","RNA_reincubated_irrigated_rep2_R1","RNA_dreid_irrigated_rep1_R1","RNA_fresh_irrigated_rep3_R1","RNA_fresh_irrigated_rep1_R1","RNA_dried_rainfed_rep2_R1","RNA_dreid_irrigated_rep4_R1","RNA_dreid_irrigated_rep3_R1","RNA_dried_rainfed_rep4_R1","RNA_fresh_irrigated_rep2_R1","RNA_dried_rainfed_rep1_R1","RNA_dried_rainfed_rep3_R1","RNA_dried_rainfed_rep1_R1","RNA_reincubated_irrigated_rep2_R1","RNA_reincubated_irrigated_rep1_R1","RNA_dried_rainfed_rep2_R1","RNA_fresh_irrigated_rep2_R1","RNA_fresh_rainfed_rep1_R1","RNA_dried_rainfed_rep3_R1","RNA_incubated_irrigated_rep4_R1","RNA_incubated_irrigated_rep3_R1","RNA_incubated_irrigated_rep2_R1","RNA_fresh_rainfed_rep2_R1","RNA_dried_rainfed_rep4_R1","RNA_incubated_irrigated_rep1_R1","RNA_fresh_rainfed_rep4_R1","RNA_fresh_irrigated_rep1_R1","RNA_incubated_rainfed_rep2_R1","RNA_reincubated_irrigated_rep3_R1","RNA_fresh_rainfed_rep3_R1","RNA_dreid_irrigated_rep3_R1","RNA_reincubated_irrigated_rep4_R1","RNA_reincubated_rainfed_rep1_R1","RNA_reincubated_rainfed_rep3_R1","RNA_reincubated_rainfed_rep4_R1","RNA_dreid_irrigated_rep1_R1","RNA_reincubated_rainfed_rep2_R1","RNA_dreid_irrigated_rep4_R1","RNA_fresh_irrigated_rep4_R1","RNA_fresh_irrigated_rep3_R1","RNA_incubated_irrigated_rep1_R1","RNA_fresh_irrigated_rep2_R1","RNA_dreid_irrigated_rep1_R1","RNA_incubated_irrigated_rep4_R1","RNA_reincubated_rainfed_rep3_R1","RNA_fresh_irrigated_rep1_R1","RNA_incubated_irrigated_rep3_R1","RNA_fresh_rainfed_rep2_R1","RNA_dried_rainfed_rep4_R1","RNA_dried_rainfed_rep3_R1","RNA_incubated_irrigated_rep2_R1","RNA_fresh_rainfed_rep4_R1","RNA_dreid_irrigated_rep3_R1","RNA_reincubated_rainfed_rep4_R1","RNA_dried_rainfed_rep2_R1","RNA_incubated_rainfed_rep2_R1","RNA_reincubated_irrigated_rep2_R1","RNA_fresh_irrigated_rep3_R1","RNA_dreid_irrigated_rep4_R1","RNA_fresh_irrigated_rep4_R1","RNA_fresh_rainfed_rep3_R1","RNA_reincubated_rainfed_rep1_R1","RNA_fresh_rainfed_rep1_R1","RNA_reincubated_irrigated_rep1_R1","RNA_reincubated_irrigated_rep3_R1","RNA_reincubated_irrigated_rep4_R1","RNA_reincubated_rainfed_rep2_R1","RNA_dried_rainfed_rep1_R1","RNA_reincubated_rainfed_rep4_R1","RNA_fresh_rainfed_rep4_R1","RNA_reincubated_irrigated_rep3_R1","RNA_fresh_rainfed_rep3_R1","RNA_reincubated_irrigated_rep2_R1","RNA_reincubated_irrigated_rep4_R1","RNA_reincubated_irrigated_rep1_R1","RNA_incubated_irrigated_rep1_R1","RNA_reincubated_rainfed_rep3_R1","RNA_incubated_irrigated_rep2_R1","RNA_dried_rainfed_rep3_R1","RNA_incubated_irrigated_rep3_R1","RNA_reincubated_rainfed_rep1_R1","RNA_reincubated_rainfed_rep2_R1","RNA_incubated_rainfed_rep2_R1","RNA_dreid_irrigated_rep3_R1","RNA_dried_rainfed_rep4_R1","RNA_dreid_irrigated_rep4_R1","RNA_incubated_irrigated_rep4_R1","RNA_fresh_rainfed_rep2_R1","RNA_fresh_irrigated_rep1_R1","RNA_fresh_irrigated_rep3_R1","RNA_fresh_rainfed_rep1_R1","RNA_fresh_irrigated_rep2_R1","RNA_fresh_irrigated_rep4_R1","RNA_fresh_irrigated_rep2_R1","RNA_fresh_irrigated_rep1_R1","RNA_fresh_irrigated_rep3_R1","RNA_fresh_rainfed_rep3_R1","RNA_incubated_rainfed_rep2_R1","RNA_incubated_irrigated_rep2_R1","RNA_incubated_irrigated_rep1_R1","RNA_incubated_irrigated_rep3_R1","RNA_fresh_rainfed_rep1_R1","RNA_fresh_rainfed_rep4_R1","RNA_incubated_irrigated_rep4_R1","RNA_reincubated_irrigated_rep1_R1","RNA_fresh_irrigated_rep4_R1","RNA_fresh_rainfed_rep2_R1","RNA_reincubated_irrigated_rep3_R1","RNA_incubated_irrigated_rep2_R1","RNA_reincubated_irrigated_rep1_R1","RNA_reincubated_irrigated_rep2_R1","RNA_incubated_irrigated_rep3_R1","RNA_reincubated_rainfed_rep4_R1","RNA_fresh_irrigated_rep2_R1","RNA_reincubated_irrigated_rep4_R1","RNA_reincubated_irrigated_rep4_R1","RNA_dreid_irrigated_rep4_R1","RNA_fresh_irrigated_rep2_R1","RNA_dreid_irrigated_rep4_R1","RNA_dreid_irrigated_rep4_R1","RNA_dreid_irrigated_rep4_R1","RNA_fresh_irrigated_rep1_R1","RNA_reincubated_irrigated_rep4_R1","RNA_reincubated_irrigated_rep4_R1","RNA_reincubated_rainfed_rep1_R1","RNA_fresh_irrigated_rep4_R1","RNA_reincubated_rainfed_rep1_R1","RNA_fresh_irrigated_rep2_R1","RNA_dreid_irrigated_rep4_R1","RNA_reincubated_irrigated_rep4_R1","RNA_reincubated_irrigated_rep4_R1","RNA_reincubated_irrigated_rep4_R1","RNA_reincubated_irrigated_rep4_R1","RNA_reincubated_irrigated_rep3_R1","RNA_reincubated_irrigated_rep4_R1","RNA_dreid_irrigated_rep4_R1","RNA_fresh_irrigated_rep4_R1","RNA_fresh_irrigated_rep4_R1","RNA_reincubated_irrigated_rep4_R1","RNA_reincubated_irrigated_rep3_R1","RNA_reincubated_irrigated_rep3_R1","RNA_reincubated_irrigated_rep3_R1","RNA_dried_rainfed_rep1_R1","RNA_fresh_irrigated_rep4_R1","RNA_dried_rainfed_rep1_R1","RNA_reincubated_irrigated_rep2_R1","RNA_reincubated_irrigated_rep2_R1","RNA_fresh_irrigated_rep4_R1","RNA_dried_rainfed_rep1_R1","RNA_reincubated_irrigated_rep2_R1","RNA_dried_rainfed_rep1_R1","RNA_reincubated_irrigated_rep2_R1","RNA_dried_rainfed_rep1_R1","RNA_reincubated_irrigated_rep2_R1","RNA_fresh_irrigated_rep2_R1","RNA_dried_rainfed_rep1_R1","RNA_reincubated_irrigated_rep1_R1","RNA_reincubated_irrigated_rep1_R1","RNA_reincubated_irrigated_rep2_R1","RNA_reincubated_irrigated_rep3_R1","RNA_reincubated_irrigated_rep2_R1","RNA_reincubated_irrigated_rep2_R1","RNA_reincubated_irrigated_rep3_R1","RNA_dreid_irrigated_rep4_R1","RNA_fresh_irrigated_rep4_R1","RNA_dreid_irrigated_rep4_R1","RNA_reincubated_irrigated_rep3_R1","RNA_dreid_irrigated_rep4_R1","RNA_dreid_irrigated_rep4_R1","RNA_reincubated_irrigated_rep2_R1","RNA_dreid_irrigated_rep4_R1","RNA_reincubated_irrigated_rep3_R1","RNA_fresh_irrigated_rep4_R1","RNA_reincubated_irrigated_rep3_R1","RNA_fresh_irrigated_rep2_R1","RNA_fresh_irrigated_rep4_R1","RNA_reincubated_irrigated_rep2_R1","RNA_reincubated_irrigated_rep2_R1","RNA_fresh_irrigated_rep4_R1","RNA_fresh_irrigated_rep2_R1","RNA_reincubated_rainfed_rep1_R1","RNA_dreid_irrigated_rep3_R1","RNA_reincubated_rainfed_rep3_R1","RNA_reincubated_rainfed_rep3_R1","RNA_reincubated_rainfed_rep3_R1","RNA_reincubated_rainfed_rep3_R1","RNA_reincubated_rainfed_rep3_R1","RNA_dreid_irrigated_rep1_R1","RNA_fresh_irrigated_rep3_R1","RNA_reincubated_rainfed_rep3_R1","RNA_dreid_irrigated_rep1_R1","RNA_reincubated_rainfed_rep3_R1","RNA_reincubated_rainfed_rep3_R1","RNA_dreid_irrigated_rep1_R1","RNA_reincubated_rainfed_rep3_R1","RNA_dreid_irrigated_rep1_R1","RNA_fresh_irrigated_rep3_R1","RNA_dreid_irrigated_rep1_R1","RNA_fresh_irrigated_rep2_R1","RNA_reincubated_rainfed_rep4_R1","RNA_reincubated_rainfed_rep4_R1","RNA_reincubated_rainfed_rep4_R1","RNA_reincubated_rainfed_rep4_R1","RNA_reincubated_rainfed_rep4_R1","RNA_reincubated_rainfed_rep4_R1","RNA_fresh_irrigated_rep3_R1","RNA_fresh_irrigated_rep3_R1","RNA_dreid_irrigated_rep1_R1","RNA_fresh_irrigated_rep3_R1","RNA_reincubated_rainfed_rep4_R1","RNA_reincubated_rainfed_rep4_R1","RNA_reincubated_rainfed_rep4_R1","RNA_dreid_irrigated_rep1_R1","RNA_reincubated_rainfed_rep4_R1","RNA_dreid_irrigated_rep1_R1","RNA_fresh_irrigated_rep2_R1","RNA_dreid_irrigated_rep1_R1","RNA_reincubated_rainfed_rep4_R1","RNA_reincubated_rainfed_rep3_R1","RNA_reincubated_rainfed_rep3_R1","RNA_fresh_irrigated_rep2_R1","RNA_reincubated_rainfed_rep2_R1","RNA_dreid_irrigated_rep3_R1","RNA_reincubated_rainfed_rep2_R1","RNA_fresh_irrigated_rep2_R1","RNA_fresh_irrigated_rep3_R1","RNA_reincubated_rainfed_rep1_R1","RNA_reincubated_rainfed_rep1_R1","RNA_dreid_irrigated_rep3_R1","RNA_reincubated_rainfed_rep1_R1","RNA_reincubated_rainfed_rep1_R1","RNA_dreid_irrigated_rep3_R1","RNA_dreid_irrigated_rep3_R1","RNA_reincubated_irrigated_rep1_R1","RNA_reincubated_rainfed_rep1_R1","RNA_dreid_irrigated_rep3_R1","RNA_reincubated_rainfed_rep1_R1","RNA_reincubated_rainfed_rep1_R1","RNA_fresh_irrigated_rep3_R1","RNA_dreid_irrigated_rep3_R1","RNA_fresh_irrigated_rep3_R1","RNA_reincubated_rainfed_rep3_R1","RNA_fresh_irrigated_rep3_R1","RNA_dreid_irrigated_rep3_R1","RNA_reincubated_rainfed_rep2_R1","RNA_reincubated_rainfed_rep2_R1","RNA_reincubated_rainfed_rep2_R1","RNA_reincubated_rainfed_rep2_R1","RNA_reincubated_rainfed_rep2_R1","RNA_reincubated_rainfed_rep2_R1","RNA_dreid_irrigated_rep3_R1","RNA_fresh_irrigated_rep3_R1","RNA_reincubated_rainfed_rep2_R1","RNA_reincubated_rainfed_rep2_R1","RNA_dreid_irrigated_rep3_R1","RNA_reincubated_rainfed_rep2_R1","RNA_reincubated_rainfed_rep2_R1","RNA_reincubated_rainfed_rep2_R1","RNA_reincubated_irrigated_rep1_R1","RNA_dried_rainfed_rep1_R1","RNA_dried_rainfed_rep1_R1","RNA_incubated_irrigated_rep1_R1","RNA_incubated_irrigated_rep1_R1","RNA_fresh_irrigated_rep1_R1","RNA_incubated_irrigated_rep1_R1","RNA_incubated_irrigated_rep1_R1","RNA_dried_rainfed_rep4_R1","RNA_incubated_irrigated_rep1_R1","RNA_incubated_irrigated_rep1_R1","RNA_dried_rainfed_rep4_R1","RNA_dried_rainfed_rep4_R1","RNA_fresh_rainfed_rep2_R1","RNA_fresh_rainfed_rep2_R1","RNA_incubated_irrigated_rep1_R1","RNA_dried_rainfed_rep4_R1","RNA_incubated_irrigated_rep1_R1","RNA_incubated_irrigated_rep1_R1","RNA_incubated_irrigated_rep1_R1","RNA_dried_rainfed_rep4_R1","RNA_fresh_irrigated_rep1_R1","RNA_incubated_irrigated_rep2_R1","RNA_incubated_irrigated_rep2_R1","RNA_incubated_irrigated_rep2_R1","RNA_incubated_irrigated_rep2_R1","RNA_incubated_irrigated_rep2_R1","RNA_dried_rainfed_rep3_R1","RNA_fresh_irrigated_rep1_R1","RNA_fresh_irrigated_rep1_R1","RNA_incubated_irrigated_rep2_R1","RNA_incubated_irrigated_rep2_R1","RNA_incubated_irrigated_rep2_R1","RNA_dried_rainfed_rep3_R1","RNA_fresh_rainfed_rep2_R1","RNA_fresh_rainfed_rep2_R1","RNA_dried_rainfed_rep4_R1","RNA_incubated_irrigated_rep2_R1","RNA_dried_rainfed_rep3_R1","RNA_dried_rainfed_rep3_R1","RNA_dried_rainfed_rep4_R1","RNA_fresh_rainfed_rep4_R1","RNA_fresh_rainfed_rep2_R1","RNA_fresh_rainfed_rep3_R1","RNA_fresh_rainfed_rep3_R1","RNA_fresh_rainfed_rep3_R1","RNA_fresh_rainfed_rep3_R1","RNA_fresh_irrigated_rep1_R1","RNA_fresh_rainfed_rep3_R1","RNA_fresh_rainfed_rep3_R1","RNA_fresh_rainfed_rep3_R1","RNA_fresh_irrigated_rep1_R1","RNA_fresh_rainfed_rep3_R1","RNA_fresh_rainfed_rep3_R1","RNA_fresh_irrigated_rep1_R1","RNA_fresh_irrigated_rep1_R1","RNA_fresh_irrigated_rep1_R1","RNA_fresh_irrigated_rep1_R1","RNA_fresh_rainfed_rep4_R1","RNA_fresh_rainfed_rep4_R1","RNA_fresh_rainfed_rep4_R1","RNA_fresh_rainfed_rep4_R1","RNA_dried_rainfed_rep4_R1","RNA_fresh_rainfed_rep2_R1","RNA_fresh_rainfed_rep4_R1","RNA_fresh_rainfed_rep4_R1","RNA_fresh_rainfed_rep4_R1","RNA_dried_rainfed_rep4_R1","RNA_fresh_rainfed_rep4_R1","RNA_fresh_rainfed_rep4_R1","RNA_fresh_rainfed_rep4_R1","RNA_reincubated_rainfed_rep4_R1","RNA_fresh_rainfed_rep4_R1","RNA_fresh_rainfed_rep4_R1","RNA_dried_rainfed_rep4_R1","RNA_dried_rainfed_rep4_R1","RNA_fresh_rainfed_rep2_R1","RNA_fresh_rainfed_rep4_R1","RNA_fresh_rainfed_rep1_R1","RNA_incubated_irrigated_rep3_R1","RNA_dried_rainfed_rep3_R1","RNA_fresh_rainfed_rep1_R1","RNA_incubated_rainfed_rep2_R1","RNA_incubated_rainfed_rep2_R1","RNA_incubated_rainfed_rep2_R1","RNA_dried_rainfed_rep2_R1","RNA_incubated_rainfed_rep2_R1","RNA_incubated_rainfed_rep2_R1","RNA_dried_rainfed_rep2_R1","RNA_dried_rainfed_rep2_R1","RNA_dried_rainfed_rep2_R1","RNA_fresh_irrigated_rep2_R1","RNA_incubated_rainfed_rep2_R1","RNA_incubated_rainfed_rep2_R1","RNA_dried_rainfed_rep2_R1","RNA_incubated_rainfed_rep2_R1","RNA_fresh_rainfed_rep1_R1","RNA_incubated_rainfed_rep2_R1","RNA_incubated_rainfed_rep2_R1","RNA_incubated_rainfed_rep2_R1","RNA_fresh_irrigated_rep4_R1","RNA_reincubated_irrigated_rep1_R1","RNA_reincubated_irrigated_rep1_R1","RNA_dried_rainfed_rep1_R1","RNA_reincubated_irrigated_rep1_R1","RNA_reincubated_irrigated_rep1_R1","RNA_fresh_rainfed_rep3_R1","RNA_fresh_irrigated_rep2_R1","RNA_reincubated_irrigated_rep1_R1","RNA_fresh_irrigated_rep4_R1","RNA_fresh_irrigated_rep4_R1","RNA_reincubated_irrigated_rep1_R1","RNA_fresh_irrigated_rep2_R1","RNA_dried_rainfed_rep2_R1","RNA_incubated_rainfed_rep2_R1","RNA_incubated_rainfed_rep2_R1","RNA_dried_rainfed_rep1_R1","RNA_dried_rainfed_rep2_R1","RNA_incubated_irrigated_rep4_R1","RNA_incubated_irrigated_rep4_R1","RNA_dried_rainfed_rep3_R1","RNA_incubated_irrigated_rep3_R1","RNA_incubated_irrigated_rep3_R1","RNA_incubated_irrigated_rep3_R1","RNA_incubated_irrigated_rep3_R1","RNA_incubated_irrigated_rep3_R1","RNA_fresh_rainfed_rep1_R1","RNA_fresh_rainfed_rep1_R1","RNA_incubated_irrigated_rep3_R1","RNA_dried_rainfed_rep3_R1","RNA_incubated_irrigated_rep3_R1","RNA_incubated_irrigated_rep3_R1","RNA_dried_rainfed_rep3_R1","RNA_dried_rainfed_rep3_R1","RNA_fresh_rainfed_rep1_R1","RNA_incubated_irrigated_rep3_R1","RNA_incubated_irrigated_rep3_R1","RNA_reincubated_irrigated_rep1_R1","RNA_incubated_irrigated_rep4_R1","RNA_incubated_irrigated_rep4_R1","RNA_incubated_irrigated_rep4_R1","RNA_incubated_irrigated_rep4_R1","RNA_incubated_irrigated_rep4_R1","RNA_incubated_irrigated_rep4_R1","RNA_dried_rainfed_rep2_R1","RNA_fresh_irrigated_rep2_R1","RNA_incubated_irrigated_rep4_R1","RNA_dried_rainfed_rep3_R1","RNA_incubated_irrigated_rep4_R1","RNA_dried_rainfed_rep2_R1","RNA_incubated_irrigated_rep4_R1","RNA_incubated_irrigated_rep4_R1","RNA_dried_rainfed_rep2_R1","RNA_fresh_rainfed_rep1_R1","RNA_fresh_rainfed_rep1_R1","RNA_fresh_rainfed_rep1_R1","RNA_incubated_irrigated_rep4_R1","RNA_reincubated_rainfed_rep4_R1"],"Kingdom":["Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Bacteria","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)"],"Phylum":["Firmicutes","Firmicutes","Firmicutes","Firmicutes","Firmicutes","Firmicutes","Firmicutes","Firmicutes","Firmicutes","Firmicutes","Firmicutes","Firmicutes","Firmicutes","Firmicutes","Firmicutes","Firmicutes","Firmicutes","Firmicutes","Firmicutes","Firmicutes","Firmicutes","Firmicutes","Firmicutes","Firmicutes","Firmicutes","Firmicutes","Firmicutes","Firmicutes","Myxococcota","Myxococcota","Myxococcota","Myxococcota","Myxococcota","Myxococcota","Myxococcota","Myxococcota","Myxococcota","Myxococcota","Myxococcota","Myxococcota","Myxococcota","Myxococcota","Myxococcota","Myxococcota","Myxococcota","Myxococcota","Myxococcota","Myxococcota","Myxococcota","Myxococcota","Myxococcota","Myxococcota","Myxococcota","Myxococcota","Myxococcota","Myxococcota","Bacteria_unclassified","Bacteria_unclassified","Bacteria_unclassified","Bacteria_unclassified","Bacteria_unclassified","Bacteria_unclassified","Bacteria_unclassified","Bacteria_unclassified","Bacteria_unclassified","Bacteria_unclassified","Bacteria_unclassified","Bacteria_unclassified","Bacteria_unclassified","Bacteria_unclassified","Bacteria_unclassified","Bacteria_unclassified","Bacteria_unclassified","Bacteria_unclassified","Bacteria_unclassified","Bacteria_unclassified","Bacteria_unclassified","Bacteria_unclassified","Bacteria_unclassified","Bacteria_unclassified","Bacteria_unclassified","Bacteria_unclassified","Bacteria_unclassified","Bacteria_unclassified","Cyanobacteria","Cyanobacteria","Cyanobacteria","Cyanobacteria","Cyanobacteria","Cyanobacteria","Cyanobacteria","Cyanobacteria","Cyanobacteria","Cyanobacteria","Cyanobacteria","Cyanobacteria","Cyanobacteria","Cyanobacteria","Cyanobacteria","Cyanobacteria","Cyanobacteria","Cyanobacteria","Cyanobacteria","Cyanobacteria","Cyanobacteria","Cyanobacteria","Cyanobacteria","Cyanobacteria","Cyanobacteria","Cyanobacteria","Cyanobacteria","Cyanobacteria","Proteobacteria","Proteobacteria","Proteobacteria","Proteobacteria","Proteobacteria","Proteobacteria","Proteobacteria","Proteobacteria","Proteobacteria","Proteobacteria","Proteobacteria","Proteobacteria","Proteobacteria","Proteobacteria","Proteobacteria","Proteobacteria","Proteobacteria","Proteobacteria","Proteobacteria","Proteobacteria","Proteobacteria","Proteobacteria","Proteobacteria","Proteobacteria","Proteobacteria","Proteobacteria","Proteobacteria","Proteobacteria","Desulfobacterota","Desulfobacterota","Desulfobacterota","Desulfobacterota","Desulfobacterota","Desulfobacterota","Desulfobacterota","Desulfobacterota","Desulfobacterota","Desulfobacterota","Desulfobacterota","Desulfobacterota","Desulfobacterota","Desulfobacterota","Desulfobacterota","Desulfobacterota","Desulfobacterota","Desulfobacterota","Desulfobacterota","Desulfobacterota","Desulfobacterota","Desulfobacterota","Desulfobacterota","Desulfobacterota","Desulfobacterota","Desulfobacterota","Desulfobacterota","Desulfobacterota","Acidobacteriota","Acidobacteriota","Acidobacteriota","Acidobacteriota","Acidobacteriota","Acidobacteriota","Acidobacteriota","Acidobacteriota","Acidobacteriota","Acidobacteriota","Acidobacteriota","Acidobacteriota","Acidobacteriota","Acidobacteriota","Acidobacteriota","Acidobacteriota","Acidobacteriota","Acidobacteriota","Acidobacteriota","Acidobacteriota","Acidobacteriota","Acidobacteriota","Acidobacteriota","Acidobacteriota","Acidobacteriota","Acidobacteriota","Acidobacteriota","Acidobacteriota","Chloroflexi","Chloroflexi","Chloroflexi","Chloroflexi","Chloroflexi","Chloroflexi","Chloroflexi","Chloroflexi","Chloroflexi","Chloroflexi","Chloroflexi","Chloroflexi","Chloroflexi","Chloroflexi","Chloroflexi","Chloroflexi","Chloroflexi","Chloroflexi","Chloroflexi","Chloroflexi","Chloroflexi","Chloroflexi","Chloroflexi","Chloroflexi","Chloroflexi","Chloroflexi","Chloroflexi","Chloroflexi","Actinobacteriota","Actinobacteriota","Actinobacteriota","Actinobacteriota","Actinobacteriota","Actinobacteriota","Actinobacteriota","Actinobacteriota","Actinobacteriota","Actinobacteriota","Actinobacteriota","Actinobacteriota","Actinobacteriota","Actinobacteriota","Actinobacteriota","Actinobacteriota","Actinobacteriota","Actinobacteriota","Actinobacteriota","Actinobacteriota","Actinobacteriota","Actinobacteriota","Actinobacteriota","Actinobacteriota","Actinobacteriota","Actinobacteriota","Actinobacteriota","Actinobacteriota","Planctomycetota","Planctomycetota","Planctomycetota","Planctomycetota","Planctomycetota","Planctomycetota","Planctomycetota","Planctomycetota","Planctomycetota","Planctomycetota","Planctomycetota","Planctomycetota","Planctomycetota","Planctomycetota","Planctomycetota","Planctomycetota","Planctomycetota","Planctomycetota","Planctomycetota","Planctomycetota","Planctomycetota","Planctomycetota","Planctomycetota","Planctomycetota","Planctomycetota","Verrucomicrobiota","Verrucomicrobiota","Verrucomicrobiota","Verrucomicrobiota","Verrucomicrobiota","Verrucomicrobiota","Verrucomicrobiota","Verrucomicrobiota","Verrucomicrobiota","Verrucomicrobiota","Verrucomicrobiota","Verrucomicrobiota","Verrucomicrobiota","Verrucomicrobiota","Bacteroidota","Bacteroidota","Bacteroidota","Bacteroidota","Bacteroidota","Bacteroidota","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)","Others(&lt;1%)"],"bottom":{"__ndarray__":"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","dtype":"float64","order":"little","shape":[600]},"count":[3331,6228,8253,1980,6713,10920,3206,9807,2787,2031,7535,14011,5376,12906,2327,10004,3235,1949,3442,15027,10500,20877,14099,17581,3661,2702,3379,14851,4889,6696,13050,10617,9460,9187,6689,6670,8759,4176,4134,6281,7394,6264,5010,4661,6399,3216,6716,5573,5922,5042,5430,5638,4918,7542,4683,9244,6616,6474,9357,3550,6227,7766,7114,5988,4883,6194,5461,7395,7464,5149,6460,3878,6338,4783,5430,6068,4515,5186,4714,5603,5269,5918,5223,5322,6587,4602,8428,6560,7514,4872,3618,14209,7480,2565,5523,4065,9660,3397,6801,5404,3904,7468,4095,2459,4701,3467,7724,6507,2539,4507,5945,5649,1959,1924,1464,3572,6071,6654,1322,957,6005,4811,1351,2945,7347,7177,6332,1156,2685,6960,5089,715,2851,1793,1109,2257,3568,1042,1922,3069,6269,1689,5799,4795,2082,551,5833,3691,1205,6647,2876,2334,3158,3243,918,1853,1532,743,880,675,6927,682,2483,1556,836,2537,1830,1799,2498,949,2237,3831,2686,3228,943,3025,629,2308,3694,5551,1072,2505,1258,3073,883,817,1446,2159,5421,1069,1454,947,1051,2256,1100,1606,1751,413,935,1542,1879,1872,2561,2527,3327,4603,998,2149,3703,1527,1556,3411,513,1533,820,489,542,1121,731,2072,994,1088,1199,1104,1409,651,2118,1048,1426,1552,838,1343,2361,2186,1063,697,3248,1413,1555,1638,921,551,3154,776,1123,1411,1473,1628,766,792,1570,1936,1470,424,1152,593,1194,894,2138,2407,1399,1118,624,1269,937,1022,1228,742,505,942,1086,1014,1365,497,1074,412,766,1228,858,860,740,731,682,877,721,701,817,738,449,999,663,836,755,611,477,972,431,32,309,30,12,152,23,13,23,308,8,32,205,11,64,35,18,228,15,33,110,258,12,65,142,6,225,27,62,68,14,71,51,67,10,3,43,49,12,14,382,11,127,29,135,32,74,234,56,190,42,8,79,33,11,148,38,43,50,14,190,27,33,33,239,20,10,71,47,44,145,38,168,26,4,361,135,15,23,147,27,291,12,42,11,51,9,145,43,225,20,33,30,256,4,32,184,29,310,24,166,111,34,94,46,132,6,324,5,294,8,45,8,106,142,24,10,155,34,28,12,51,20,156,5,19,78,26,10,21,41,11,109,33,178,24,7,20,111,89,18,10,25,19,48,11,16,18,4,16,77,33,222,57,44,43,143,16,16,105,148,367,9,41,18,76,88,22,93,7,51,18,53,145,73,183,34,71,95,51,6,132,48,40,9,11,4,6,16,60,7,14,23,15,4,94,37,191,281,111,24,229,6,21,42,264,5,67,28,98,2,66,36,103,68,295,68,48,7,38,19,46,98,53,32,27,6,100,14,109,41,13,71,113,11,16,29,28,6,272,372,30,18,39,60,10,38,38,14,69,61,70,244,314,13,26,23,30,47,45,101,8,30,10,99,11,63,118,6,68,22,19,85,46,27,45,9,127,25,42,6,4,35,15,32,322,20,42,2,62,28,24,4,42,43,101,12,63,51,62,141,19,27,194],"relabund":{"__ndarray__":"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","dtype":"float64","order":"little","shape":[600]},"top":{"__ndarray__":"5Ipd/9aRtT8RkNjCHSrEPyccTM2MuMo/AFeFeIqkqT8DLzKLHLzFPx++oQGOrdE/OLLNM6DCtD+eCUGul8DPPyPhT1gLDLI/o+bXp6BNqj/X2/5nbmXIPyqQSEuNrtY/EL9/SO5nwT/Un3Pgm+TUP3FqDEf+Iq4/wAwTR/Ax0D9i1g8Ps/K0PwF9qELDPak/pWM3jdhJtj8y08BhnFPYP6HAzLJ+/9A/305Q8QHm4D8MtK+HBdPWP6r6WmkPdtw/hKdoieK0tz+PvjWGI3+xPyhlhPdo4bU/FYvy6KsK2D8JjnDbsJjePxRY/RoE1eA/z1ByI6nk2D8g2veyo2DWP8e56KKLLto/ldMFsiI/0z8D3Afnt7jfPxbummMzgNM/ktuYw4fb3z973g03QxbfP6eU0mShPuQ/WvStuBRA1D8v24bF9DTRP6RRwPJ4I9s/slAHDX5dyz/x57XuAAjKP1cMyYQlSdA/SOHyMm7V4D+iv4zUPBHbPwvuDvmnWsg/Hg7+GZ+VyT8+4cPtf+bGP/jasJieJtY/WmM8/xxHyz/ziPUXagDgP6yy1rLpFdw/uQzWEHTyyT+tWiNasCnbP5RSLrFpWdg/ZP34SjX73T/6JxspNqbiP1xuRIQ9Huc/78o/Tspd2j80M41fQl3ZP/BdvMmRsdc/6KqW4pi11j9GmmyyySbbP3IXO7sxANc/BkNN3iUM2j8OX5oQ8mvXP85aLNn5fOI/k+l7YEp34z+6NHQl7GrgPx49s5D9I+M/Id1wM2Tx1z/PicVtPGrjP/XAuOpsCt0/z3FbbRx74j9BwDw77oPjP93s9OAKCOU/r0y5xKZl4T+OmfACS6DhPyYgu2nETuI/2HMJCk+f5T9+4gxLCyjkP8TYgHVp1+E/oq5siPZ86T97Hm7/M7fiP7CGes0qIek/tz/L3hso4T+WMF6hTLXnP1uNcNuwmN4/MkWCc59Y4z8UsfRehAXqP3xUoHxf5ec/Ez+0bkSE3T/HcEVihH7hP4OsES3YlN0/jK9Kz1Y36T+8HL/9wevcP91as9FApeg/QFkJQhPX5z+gqJkRV6veP6vOI+W1dek/98GSJMhu6j9+fOrqg3rkP+sX9QVsbek/fgsZHnTW5z84SH7fobvoP+YeP7pFyOg/I7c2+VO05D8zkwIPz9TgP1QktQtIY+I/bv1Dcj+L4D8lBBqRpAvrP3GwYNruM+o/zKaOT4dQ6j+k4rMyc0flP/Mp7ibOvuU/eMzgXq7Y4z98yO87dBfrPykc76fvgek/jb0Riv0x5D9ai/GDbGPlP28LrgdJT+o/DgUGyZIW5z9KMmDk0rzkP9XQlEtsWuY/zj5hLTBI5j//YvI8Ul7rP1LvoRj+hOU/xHp4H47u5D8esFdbpeDiP0shoi9uXOk/9SvUhzgl6j+cE/tj6FjpP/o4wm3DYuo/bjc9P/uI6T+IyoH2iprlPzAwqchWReo/ryXBMldl6T/kADGIdPbmPyIaWHuUAeo/MQBqsevf6j8m5miEcHDqP+Bc8eUDRek/B7tt0VMI6z8lQZFQZZfqP1uoXUAaE+s/zFzx5QNF6T8K8ba+VtrjP8ibN5ZXk+k/vov6Ara27D/8Fe5QoWjnP3ynVSYQZ+Y/q0Ba8Wz86z84GXo0NEfqP8qboqyCGuc/cjlk4+aE5j8AqJH3TP/pPzAX9mqrFOw/HvyUcM2/6j+tD80KMljqP8uvKXv2mOs/jr/p+dlH7D/hz+DXtZHrP/mReG7C/eo/IAssgUYk6T+s8Ijep5LsP3JbbLc7a+g/BPpaaQ927D8W8PRZEsHsP6W2cy/Q8+o/ANcXKb2e6T+BywuXl3HrPz/2csUeCOs/LxQk0lKj6z9o0Rrfc9vpPy/qrU3+FO0/pMt2rcL46D+JyHHCdkLsP0BAQ4GVWOg/MfH3Adhv7D+Hg5pDRF/sPxCut68ADew/fDJpYxwQ7D+jje5Urm3tP/ATNzUl8ew/Co8D+wbD6z+Lbz1IetLsP9AkitNeyuo/zOoccS7y7D+qi8I+fnTrPz64Hb/9wes/fv0Zn5WZ6z9yXDwNDtXrPwhRrvTlfOw/09C+HhZM6z9F0OTkuuftP64yxoi5Ru0/FaZX8I616z8975iZtDHuP3gk1fpoWu0/iTPJMH/17D94RGf2wl7tP5ROzQXAE+0/cnAbj9qM7D/5L2MTkbLsP8cXDHZDEe0/9BYuL+NW7T8HlZTJ5VfrP3YDZbium+0/Oum8o8sM7D/N9WDHi2HsP6fXeFtfK+0/2E0UIMVN7T9RWlse6GvsP5IH8DYC0+0/PRaaqk2F7T84b84kSvXsP6tfMwfMOuw/u4iq8F9w7T8pLqeF0D3tPxH2hSjxVew/hZ/ZhIJu7T8PI63xPbftP+R5yLjce+w/fgKHcU7h7T+U1GANQSfvPz8CYhDp7O0/wGGp38Yc7j9fmwREZE7tP8Dk+sV/Ou0/Ik+ZTo0n7j/v+OyqHkDvP/rGuUG7I+8/LWip0dWO7T+hMyZWHCzuP3xQ+RvwDO8/0VZSJpdf7T8Z79Bd7HPvP9mw5m32tO0/LWLzoZEF7j8+OGq6ainuP8u+D8B+4+4/mXj91E4P7j8lmCCteDbuP0CEw7Guqe4/xzyuHrkm7j9tsxEf5wbtPwsD0TMZyu0/uynARh937j+IspD9I4PuP7NcU33leO8/VxJH8DGQ7j+cxHst+IPuP9SRRRzPuO4/L+0BbVmx7j/RMIyB+/zuP96dehxfMO8/p1pfK+3B7j/9rZZboG7uP+iYEVerPu8/m9vPIoB27j+h6fh0CKXvP/9JCyh0Qe4/0vycitdr7z9qb63Q6VbvP86azeRrs+4/Ng7P1LCm7z/2u5pMw6jvPzMOz9Swpu8/fuMv4vHN7j9z59/BqvnuPzC3HiQ9ae4/udZB/GaQ7j8z57pgRQXvP6ZcG7mtNu4/+aNVrQiu7j+lRgIwIzXvP+KGlUoHG+8/ii+uOptC7z/LIeINsErvP0vm3BnlSu8/PoffDNID7z91FKplWiTvP9DnTuXa1u4/pClnLoeW7z/9GMloQy3vP/aOGmveZu8/3B0yLvce7z/Lt+psCn3vP0n8UsgMg+8/BH0vOwpm7z9cQHFhRKDvPyVFtcWSne8/73PM09Jf7z9HQHFhRKDvP08DeBuB6e4/1dhar8Q77z9/4SmSZnDvP4zqjPmddu8/BUWQZC2p7z87jz/MQ1vvPxfuF3jxre8/eunTE6Ow7z+LklsnZ7XvP/QFSrTZWu8/Fw9jWUZ47z9HobvY537vP1ZlbCJSlu8/Cyqx8FF/7z+2iR0hlaPvPyBviG+EYu8/xmT9/iG57z/fshKEJq7vP2Y3xDdCse8/KI4Xwxi47z+uBNjo487vP6mX6U2Am+8/gDuZeGDR7z+4TakJmsbvP8AyypW+nO8/Kc6q3fyd7z9h///////vPwFTXJEYoe8/P+4XePGt7z/mJLSmCLzvP6ccCiXMe+8/hFI3MLOs7z+kRf+HXYbvPwTmbfa0be8/s5M5bsdv7z85oCdUUq3vPxVKHotGj+8/jTM5ue557z/ngN8aw5HvP4Hz72DVfO8/AtIQ++rg7z/BZbbkHH/vP0/z72DVfO8/fhZ5Vu3m7z/g7fIWjLnvPxCAS5YtwO8/0DczW3KO7z/m0euZhezvP6Q3DvoMmu8/ohss3mvB7z/FERCROfXvP0Nyf2lCyO8/H0mKBrG97z8FydL0GM/vPwWE1hSB9+8/I23M4cPt7z+8mgWpo/XvPxMgS+FUyu8/J///////7z/6Q428Z/rvPx4tqOoP5e8/Uv//////7z8QSkPsq4PvP+CD+3Xm6+8/7aNoENv77z9L///////vP48xx+347e8/a87PPmKS7z9toCdUUq3vPzfX6OPOr+8/U+8aILdc7z/sHFTnlmTvP2gc5cNmh+8/LxNd+8mM7z90JUgrno3vP8IFAPIOcu8/Rdjri5Re7z/7qfneuZDvP9SuhwXTdu8/iYn4vy+v7z/hRGsDyLTvPzkglaMfs+8/s3ssk0S37z8YYLma07vvP4VKsg/cYO8/FYmu/WTG7z+It6CqP5TvP7lZgeSMB+8/KV6g53UQ7z8LIgdvFT/vP2l9nl46Q+8/K9Tx6RBK7z843VRRSFDvPwXcdgrole8/Su5hOryW7z9FGwd9Bs3vP+A2n9bcvO8/tCG9rEpW7z/pKWcuh5bvP42X6U2Am+8/nJGiQWzv7z+l0qR/gLLvP+6s8Nh39u8/9uS0ELqn7z8T///////vP6wt8qzaze8/HBcN24K47z9C320EpvvvP867mkzDqO8/hC6rktWT7z/C+75Dd7HvPxi8v60one8/WeBwrGuq7z8em3TM09LvPyOpQPm+yu8/xxbDGLjP7z9xqYq7ibPvP94amFnW7+8/MDbm8OH27z9aKfgKV7nvPyxguZrTu+8/DalA+b7K7z+OkX3gBvvvP9Yoiecm3O8/ZmhjHBD87z8z///////vP3R/3HL94u8/nB8BH4rh7z8jLajqD+XvPzH//////+8/cajR1Y7t7z/ckcei0ePvPw1uhce+s+8/z8TYUpW67z/5cTWnd9/vP53ft8Zw5O8/lz+TGuTl7z/0mioKCervP/LMgtTR+u8/B///////7z8vbczhw+3vP94amFnW7+8/J///////7z+rsTQ9xvPvP/KMOXy4/e8/Mv//////7z8l8uy4D87vP7noGi6o6u8//voFXnzr7z+NXVYlqyfvP1F9w7+fN+8/tlydP7Bh7z+A8zkjoGXvP+W3D85vce8/94S0W+Gx7z9WvC7RWHrvP52JQoL6l+8/D85gGzK17z8nFw3bgrjvP/ebLbLOmO8/FkAnn3m37z8yVsKuBuTvP0QA3kZguu8/gNHrmYXs7z+7o41xQPDvP+7+/////+8/R5IRZZzM7z82QSpHP2bvPzipiruJs+8/MglmD/207z8vMltyjr/vP2oE/UlJw+8/irbnxETO7z8LQAI+FMPvP7ROrLFfde8/udLuQUub7z/d0TVcUNXvPzlWwq4G5O8/OEjRILb37z8Iafegpc3vP3/bB+e3uO8/hDZVFBLU7z+PbRakjtbvP/P+/////+8/JVLIDIPP7z9lxI6QytHvP9R/AdRi1+8/ZrSpsIEu7z+cfwHUYtfvP+UzqNweV+8/35ODMJJY7z/TUzrYeFvvP+X8wes8YO8/QFeg9Wae7z8qD60bEWHvP5g8wYGLdO8/n6X/PDZ87z/N/7jl+sXvP1dpQWNwtu8/bqT8lHDN7z9xbTsF9MrvP5xDjbxn+u8/Bd9tBKb77z/0/v/////vP0X0zac1N+8/UqpoAupt7z8qgU4+827vPz7z72DVfO8/vv9uIzDd7z9PvwBqsevvP2F85Xg/fe8/5SmMj+yK7z9bzs8+YpLvP0gWVPWH8u8/AgVsbXmg7z+viGQ7mt3vP1W/AGqx6+8/9Aj368zX7z9PH9y9JO3vP+lMFYUE9e8/Fa3w2Hf27z86///////vPwP//////+8/CP//////7z/Uu7+tKJ3vP5/746Tcpe8/zl9v2AjT7z+qhLRb4bHvP0Cmk8HLTe8/NVhZ22Fk7z+D04LG4GzvP3zqjPmddu8/31cPGZd77z8YHMBiAZPvP7xcU33leO8/1KX/PDZ87z9Q6meYOILvP0Ng3vs4sO8/gbegqj+U7z8ZkhFlnMzvP7iNzQBOz+8/Jpt0zNPS7z/lVlYznLXvP1GNqJ/o2u8/ap9ublfn7z8ZTTrmaenvPylfALXY9e8/vx8mgO/V7z+z39wn1tjvPzX2nJjI+e8/X7adAnrl7z8ndi9J+/PvPxz//////+8/unpzrUnx7z+KcevkrPbvP/BVeOw7++8/Af//////7z+Xek5M5PzvP3CRfeAG++8/TBviG6HY7z+C2imgV/7vPw3//////+8/Qv//////7z/7yK2Ts9rvPzyTFA1ie+8/fAXbkKl97z+dvyXLFuDvP7GWeipQvu8/GjJbco6/7z/AaPegpc3vP0BNhKg00u8/DeQgjCTW7z82m5ktOcfvP1rtqFTB0O8/ZZ+Tz7zb7z8wTTrmaenvP4KIZDua3e8/sgzMLOv37z9lf7cRmO7vP0S/2whM9+8/w4iJnP/R7z/3Hrdcv/jvP9z+/////+8/Hv//////7z+slzMQS4TvP7DWniEEx+8/DTI2ESnL7z/scVoI3dPvPw/7TyBH1O8/TZYLByDh7z/lSBvjgODvPxT//////+8/kqj2NvTh7z8j///////vPwOtFTrd6u8/TdYKnW717z/V49bJWe3vP6RDjbxn+u8/Sv//////7z8BJEWD2N7vPyZoYxwQ/O8/8/7/////7z/8/v/////vPzj//////+8/","dtype":"float64","order":"little","shape":[600]}},"selected":{"id":"1037"},"selection_policy":{"id":"1050"}},"id":"1036","type":"ColumnDataSource"},{"attributes":{"label":{"field":"Phylum"},"renderers":[{"id":"1042"}]},"id":"1053","type":"LegendItem"},{"attributes":{"children":[{"id":"1002"},{"id":"1006"},{"id":"1074"}],"margin":[0,0,0,0],"name":"Row01500","tags":["embedded"]},"id":"1001","type":"Row"},{"attributes":{"axis":{"id":"1019"},"dimension":1,"grid_line_color":null,"ticker":null},"id":"1021","type":"Grid"},{"attributes":{},"id":"1037","type":"Selection"},{"attributes":{"active_drag":"auto","active_inspect":"auto","active_multi":null,"active_scroll":"auto","active_tap":"auto","tools":[{"id":"1005"},{"id":"1022"},{"id":"1023"},{"id":"1024"},{"id":"1025"},{"id":"1026"}]},"id":"1028","type":"Toolbar"},{"attributes":{},"id":"1011","type":"LinearScale"},{"attributes":{"margin":[5,5,5,5],"name":"HSpacer01504","sizing_mode":"stretch_width"},"id":"1002","type":"Spacer"},{"attributes":{"glyph_height":12,"items":[{"id":"1053"}],"label_height":12,"label_text_font_size":"12px","location":[30,0],"spacing":0},"id":"1052","type":"Legend"},{"attributes":{"margin":[5,5,5,5],"name":"HSpacer01505","sizing_mode":"stretch_width"},"id":"1074","type":"Spacer"},{"attributes":{},"id":"1022","type":"SaveTool"},{"attributes":{"axis_label":"relabund","bounds":"auto","formatter":{"id":"1045"},"major_label_orientation":"horizontal","ticker":{"id":"1016"}},"id":"1015","type":"LinearAxis"},{"attributes":{},"id":"1023","type":"PanTool"},{"attributes":{},"id":"1047","type":"CategoricalTickFormatter"},{"attributes":{"axis":{"id":"1015"},"grid_line_color":null,"ticker":null},"id":"1018","type":"Grid"},{"attributes":{},"id":"1016","type":"BasicTicker"},{"attributes":{"end":0.999999999999984,"reset_end":0.999999999999984,"reset_start":0.0,"tags":[[["relabund","relabund",null]]]},"id":"1003","type":"Range1d"},{"attributes":{"fill_alpha":{"value":0.2},"fill_color":{"field":"Phylum","transform":{"id":"1035"}},"height":{"value":0.8},"left":{"field":"bottom"},"line_alpha":{"value":0.2},"right":{"field":"top"},"y":{"field":"Group"}},"id":"1041","type":"HBar"},{"attributes":{},"id":"1024","type":"WheelZoomTool"},{"attributes":{"factors":["Acidobacteriota","Actinobacteriota","Others(&lt;1%)","Bacteria_unclassified","Chloroflexi","Cyanobacteria","Desulfobacterota","Firmicutes","Myxococcota","Proteobacteria","Planctomycetota","Verrucomicrobiota","Bacteroidota"],"palette":["#30a2da","#fc4f30","#e5ae38","#6d904f","#8b8b8b","#17becf","#9467bd","#d62728","#1f77b4","#e377c2","#8c564b","#bcbd22","#30a2da"]},"id":"1035","type":"CategoricalColorMapper"},{"attributes":{},"id":"1050","type":"UnionRenderers"},{"attributes":{"text":"","text_color":{"value":"black"},"text_font_size":{"value":"12pt"}},"id":"1007","type":"Title"},{"attributes":{"below":[{"id":"1015"}],"center":[{"id":"1018"},{"id":"1021"},{"id":"1052"}],"left":[{"id":"1019"}],"margin":null,"min_border_bottom":10,"min_border_left":10,"min_border_right":10,"min_border_top":10,"plot_height":560,"plot_width":800,"renderers":[{"id":"1042"}],"right":[{"id":"1052"}],"sizing_mode":"fixed","title":{"id":"1007"},"toolbar":{"id":"1028"},"x_range":{"id":"1003"},"x_scale":{"id":"1011"},"y_range":{"id":"1004"},"y_scale":{"id":"1013"}},"id":"1006","subtype":"Figure","type":"Plot"},{"attributes":{"fill_alpha":{"value":0.1},"fill_color":{"field":"Phylum","transform":{"id":"1035"}},"height":{"value":0.8},"left":{"field":"bottom"},"line_alpha":{"value":0.1},"right":{"field":"top"},"y":{"field":"Group"}},"id":"1040","type":"HBar"},{"attributes":{"callback":null,"renderers":[{"id":"1042"}],"tags":["hv_created"],"tooltips":[["Group","@{Group}"],["Phylum","@{Phylum}"],["relabund","@{relabund}"],["count","@{count}"],["Kingdom","@{Kingdom}"]]},"id":"1005","type":"HoverTool"},{"attributes":{"source":{"id":"1036"}},"id":"1043","type":"CDSView"},{"attributes":{"axis_label":"Group","bounds":"auto","formatter":{"id":"1047"},"major_label_orientation":"horizontal","ticker":{"id":"1020"}},"id":"1019","type":"CategoricalAxis"},{"attributes":{"bottom_units":"screen","fill_alpha":0.5,"fill_color":"lightgrey","left_units":"screen","level":"overlay","line_alpha":1.0,"line_color":"black","line_dash":[4,4],"line_width":2,"right_units":"screen","top_units":"screen"},"id":"1027","type":"BoxAnnotation"},{"attributes":{"data_source":{"id":"1036"},"glyph":{"id":"1039"},"hover_glyph":null,"muted_glyph":{"id":"1041"},"nonselection_glyph":{"id":"1040"},"selection_glyph":null,"view":{"id":"1043"}},"id":"1042","type":"GlyphRenderer"},{"attributes":{},"id":"1026","type":"ResetTool"},{"attributes":{"fill_color":{"field":"Phylum","transform":{"id":"1035"}},"height":{"value":0.8},"left":{"field":"bottom"},"right":{"field":"top"},"y":{"field":"Group"}},"id":"1039","type":"HBar"},{"attributes":{"factors":["RNA_reincubated_rainfed_rep4_R1","RNA_reincubated_rainfed_rep3_R1","RNA_reincubated_rainfed_rep2_R1","RNA_reincubated_rainfed_rep1_R1","RNA_reincubated_irrigated_rep4_R1","RNA_reincubated_irrigated_rep3_R1","RNA_reincubated_irrigated_rep2_R1","RNA_reincubated_irrigated_rep1_R1","RNA_incubated_rainfed_rep2_R1","RNA_incubated_irrigated_rep4_R1","RNA_incubated_irrigated_rep3_R1","RNA_incubated_irrigated_rep2_R1","RNA_incubated_irrigated_rep1_R1","RNA_fresh_rainfed_rep4_R1","RNA_fresh_rainfed_rep3_R1","RNA_fresh_rainfed_rep2_R1","RNA_fresh_rainfed_rep1_R1","RNA_fresh_irrigated_rep4_R1","RNA_fresh_irrigated_rep3_R1","RNA_fresh_irrigated_rep2_R1","RNA_fresh_irrigated_rep1_R1","RNA_dried_rainfed_rep4_R1","RNA_dried_rainfed_rep3_R1","RNA_dried_rainfed_rep2_R1","RNA_dried_rainfed_rep1_R1","RNA_dreid_irrigated_rep4_R1","RNA_dreid_irrigated_rep3_R1","RNA_dreid_irrigated_rep1_R1"],"tags":[[["Group","Group",null]]]},"id":"1004","type":"FactorRange"},{"attributes":{},"id":"1045","type":"BasicTickFormatter"},{"attributes":{},"id":"1013","type":"CategoricalScale"},{"attributes":{"overlay":{"id":"1027"}},"id":"1025","type":"BoxZoomTool"},{"attributes":{},"id":"1020","type":"CategoricalTicker"}],"root_ids":["1001"]},"title":"Bokeh Application","version":"2.1.1"}}
+        </script>
+        <script type="text/javascript">
+          (function() {
+            var fn = function() {
+              Bokeh.safely(function() {
+                (function(root) {
+                  function embed_document(root) {
+                    
+                  var docs_json = document.getElementById('1188').textContent;
+                  var render_items = [{"docid":"2ea69ca9-14cf-47a0-8622-6b6199f16355","root_ids":["1001"],"roots":{"1001":"a9eead51-0395-4cf2-b297-74d52e7d1487"}}];
+                  root.Bokeh.embed.embed_items(docs_json, render_items);
+                
+                  }
+                  if (root.Bokeh !== undefined) {
+                    embed_document(root);
+                  } else {
+                    var attempts = 0;
+                    var timer = setInterval(function(root) {
+                      if (root.Bokeh !== undefined) {
+                        clearInterval(timer);
+                        embed_document(root);
+                      } else {
+                        attempts++;
+                        if (attempts > 100) {
+                          clearInterval(timer);
+                          console.log("Bokeh: ERROR: Unable to run BokehJS code because BokehJS library is missing");
+                        }
+                      }
+                    }, 10, root)
+                  }
+                })(window);
+              });
+            };
+            if (document.readyState != "loading") fn();
+            else document.addEventListener("DOMContentLoaded", fn);
+          })();
+        </script>
+    
+  </body>
+  
+</html>
