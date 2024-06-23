@@ -59,8 +59,8 @@ DNA_dreid_irrigated_rep1_R1.fastq.gz
 
 ## Credits
 ### Original 16s Pipeline
-* <p> <a href= "https://github.com/hawaiidatascience/metaflowmics"> 
-hawaiidatascience
+
+* <p> <a href= "https://github.com/hawaiidatascience/metaflowmics"> hawaiidatascience
  </a> </p>
 
 ### Students
