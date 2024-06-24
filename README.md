@@ -3,7 +3,7 @@
 ## Description
 MethanoReplica is a project dedicated to replicating and validating the results of the study "Response of Methanogenic Microbial Communities to Desiccation Stress in Flooded and Rain-Fed Paddy Soil from Thailand."
 
-![Pipeline](./extras/pictures/pipeline.png)
+![Pipeline](./extras/pipeline.png)
 
 ## Features
 * Download original Bioproject files into fastq;
