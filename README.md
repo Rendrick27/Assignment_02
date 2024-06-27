@@ -28,7 +28,7 @@ MethanoReplica is a project dedicated to replicating and validating the results 
 ## Installation
 ```bash
 # Download the project
-wget https://github.com/Rendrick27/Assignment_02/archive/refs/heads/main.zip
+wget https://github.com/Rendrick27/MethanoReplica/archive/refs/heads/main.zip
 
 # Unzip the folder
 unzip main.zip
