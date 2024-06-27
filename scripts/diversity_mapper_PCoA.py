@@ -3,6 +3,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from sklearn.manifold import MDS
 
+
 def load_data(file_path):
     """
     Load the beta diversity data from a given file path.
@@ -43,7 +44,8 @@ def create_distance_matrix(distance_data):
     np.ndarray: Distance matrix.
     list: List of unique sample names.
     """
-    samples = sorted(set(distance_data['sample1']).union(set(distance_data['sample2'])))
+    samples = sorted(set(distance_data
+                         ['sample1']).union(set(distance_data['sample2'])))
     sample_index = {sample: idx for idx, sample in enumerate(samples)}
 
     n_samples = len(samples)
@@ -81,7 +83,7 @@ def assign_shape(sample_name):
     sample_name (str): Name of the sample.
 
     Returns:
-    str: Shape assigned to the sample ('o' for DNA, '^' for RNA, 's' for others).
+    str: Shape assigned to the sample ('o' for DNA, '^' for RNA.
     """
     if 'dna' in sample_name.lower():
         return 'o'  # Circle
@@ -106,9 +108,9 @@ def plot_pcoa(coords, samples, colors, shapes, conditions):
     for (x, y), color, shape in zip(coords, colors, shapes):
         plt.scatter(x, y, c=color, marker=shape, s=100)
 
-    legend_elements = [plt.Line2D([0], [0], marker='o', color='w', 
+    legend_elements = [plt.Line2D([0], [0], marker='o', color='w',
                                   markerfacecolor=color, markersize=10,
-                                   label=condition)
+                                  label=condition)
                        for condition, color in conditions.items()]
 
     legend_elements += [
@@ -156,7 +158,7 @@ def main():
         'reincubated_rainfed': 'olive'
     }
 
-    # Assign colors and shapes to each sample based on their conditions and type
+    # Assign colors and shapes to each sample
     colors = [assign_color(sample, conditions) for sample in samples]
     shapes = [assign_shape(sample) for sample in samples]
 
