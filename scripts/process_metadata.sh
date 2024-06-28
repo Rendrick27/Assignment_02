@@ -26,5 +26,5 @@ process_metadata() {
 }
 
 # Process metadata files
-process_metadata ./data/PRJNA362531_metadata.csv
-process_metadata ./data/PRJNA362529_metadata.csv
+process_metadata ./metadata/PRJNA362531_metadata.csv
+process_metadata ./metadata/PRJNA362529_metadata.csv
